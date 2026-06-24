@@ -24,8 +24,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="vi" className={`${beVietnamPro.className} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-white text-gray-900">
+    <html lang="vi" className={`${beVietnamPro.className} h-full antialiased`} style={{ colorScheme: 'light' }}>
+      <body className="min-h-full flex flex-col bg-white text-gray-900" style={{ backgroundColor: '#ffffff' }}>
         {children}
       </body>
     </html>

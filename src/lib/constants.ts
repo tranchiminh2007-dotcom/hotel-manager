@@ -2,7 +2,7 @@ export const HOTEL_CONFIG = {
   name: 'Khách Sạn Ninh Bình',
   tagline: 'Nghỉ dưỡng giữa lòng di sản',
   address: 'Ninh Bình, Việt Nam',
-  phone: '0229 xxx xxxx',
+  phone: '0834 367 026',
   email: 'info@ksninhbinh.vn',
   mapUrl: '',
 }

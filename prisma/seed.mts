@@ -461,7 +461,7 @@ async function main() {
       id: 'main',
       name: 'Khách Sạn Ninh Bình',
       address: 'Ninh Bình, Việt Nam',
-      phone: '0229 xxx xxxx',
+      phone: '0834 367 026',
       email: 'info@ksninhbinh.vn',
       description: 'Khách sạn hiện đại giữa lòng di sản thiên nhiên Ninh Bình, gần Tràng An, Bái Đính và Phố Cổ Hoa Lư.',
       story: 'Khách Sạn Ninh Bình được thành lập với mong muốn mang đến cho du khách một nơi nghỉ dưỡng thoải mái, tiện nghi ngay giữa vùng đất di sản. Chúng tôi tự hào là điểm dừng chân lý tưởng để khám phá vẻ đẹp thiên nhiên và văn hóa của Ninh Bình. Với cam kết về chất lượng dịch vụ và sự thân thiện, chúng tôi luôn nỗ lực để mỗi khách hàng đều có trải nghiệm đáng nhớ.',
