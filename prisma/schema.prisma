@@ -1,0 +1,210 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("STAFF") // MANAGER | STAFF
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  tasks     Task[]
+  shifts    Shift[]
+}
+
+model RoomType {
+  id          String      @id @default(cuid())
+  name        String
+  slug        String      @unique
+  description String
+  basePrice   Int
+  maxGuests   Int
+  size        Int
+  bedType     String
+  amenities   String      @default("[]") // JSON array
+  images      RoomImage[]
+  rooms       Room[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model RoomImage {
+  id         String   @id @default(cuid())
+  url        String
+  alt        String
+  sortOrder  Int      @default(0)
+  roomTypeId String
+  roomType   RoomType @relation(fields: [roomTypeId], references: [id], onDelete: Cascade)
+}
+
+model Room {
+  id         String    @id @default(cuid())
+  number     String    @unique
+  floor      Int
+  status     String    @default("AVAILABLE") // AVAILABLE | OCCUPIED | MAINTENANCE | CLEANING
+  notes      String?
+  roomTypeId String
+  roomType   RoomType  @relation(fields: [roomTypeId], references: [id])
+  bookings   Booking[]
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model Guest {
+  id          String    @id @default(cuid())
+  fullName    String
+  email       String?
+  phone       String
+  idNumber    String?
+  nationality String    @default("Việt Nam")
+  bookings    Booking[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Booking {
+  id             String        @id @default(cuid())
+  code           String        @unique
+  checkIn        DateTime
+  checkOut       DateTime
+  numGuests      Int
+  totalPrice     Int
+  status         String        @default("PENDING") // PENDING | CONFIRMED | CHECKED_IN | CHECKED_OUT | CANCELLED
+  specialRequests String?
+  guestId        String
+  guest          Guest         @relation(fields: [guestId], references: [id])
+  roomId         String
+  room           Room          @relation(fields: [roomId], references: [id])
+  discountCodeId String?
+  discountCode   DiscountCode? @relation(fields: [discountCodeId], references: [id])
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model DiscountCode {
+  id        String    @id @default(cuid())
+  code      String    @unique
+  type      String    // PERCENTAGE | FIXED
+  value     Int
+  minNights Int       @default(1)
+  maxUses   Int       @default(100)
+  usedCount Int       @default(0)
+  validFrom DateTime
+  validTo   DateTime
+  isActive  Boolean   @default(true)
+  bookings  Booking[]
+  createdAt DateTime  @default(now())
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  guestName String
+  rating    Int      // 1-5
+  content   String?
+  createdAt DateTime @default(now())
+}
+
+model Amenity {
+  id          String @id @default(cuid())
+  name        String
+  description String
+  icon        String
+  category    String // RECREATION | DINING | WELLNESS | SERVICES
+}
+
+model StockCategory {
+  id    String      @id @default(cuid())
+  name  String      @unique
+  items StockItem[]
+}
+
+model StockItem {
+  id           String         @id @default(cuid())
+  name         String
+  sku          String         @unique
+  currentStock Int            @default(0)
+  minStock     Int            @default(10)
+  unit         String
+  categoryId   String
+  category     StockCategory  @relation(fields: [categoryId], references: [id])
+  history      StockHistory[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+}
+
+model StockHistory {
+  id        String   @id @default(cuid())
+  type      String   // RESTOCK | USAGE | ADJUSTMENT
+  quantity  Int
+  notes     String?
+  itemId    String
+  item      StockItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+}
+
+model Task {
+  id           String   @id @default(cuid())
+  title        String
+  description  String?
+  priority     String   @default("MEDIUM") // LOW | MEDIUM | HIGH | URGENT
+  status       String   @default("PENDING") // PENDING | IN_PROGRESS | COMPLETED
+  dueDate      DateTime?
+  roomNumber   String?
+  assignedToId String?
+  assignedTo   User?    @relation(fields: [assignedToId], references: [id])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Shift {
+  id        String   @id @default(cuid())
+  date      DateTime
+  shiftType String   // MORNING | AFTERNOON | NIGHT
+  startTime String
+  endTime   String
+  notes     String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Promotion {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  badgeText   String?
+  imageUrl    String?
+  validFrom   DateTime
+  validTo     DateTime
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+model Attraction {
+  id          String @id @default(cuid())
+  name        String
+  description String
+  category    String // NATURE | CULTURE | FOOD | ACTIVITY
+  distance    String
+  imageUrl    String?
+  mapUrl      String?
+}
+
+model HotelSettings {
+  id          String @id @default("main")
+  name        String
+  address     String
+  phone       String
+  email       String
+  mapUrl      String?
+  description String
+  story       String
+  updatedAt   DateTime @updatedAt
+}
