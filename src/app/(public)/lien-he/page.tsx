@@ -75,44 +75,44 @@ export default function ContactPage() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
-                  label="Họ tên"
+                  label={t('contact.name')}
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="Nhập họ tên"
+                  placeholder={t('contact.namePlaceholder')}
                   required
                 />
                 <Input
-                  label="Email"
+                  label={t('contact.email')}
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="Nhập email"
+                  placeholder={t('contact.emailPlaceholder')}
                   required
                 />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
-                  label="Số điện thoại"
+                  label={t('contact.phone')}
                   type="tel"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  placeholder="Nhập số điện thoại"
+                  placeholder={t('contact.phonePlaceholder')}
                   required
                 />
                 <Input
-                  label="Tiêu đề"
+                  label={t('contact.subject')}
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  placeholder="Tiêu đề tin nhắn"
+                  placeholder={t('contact.subjectPlaceholder')}
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Nội dung</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">{t('contact.message')}</label>
                 <textarea
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Nhập nội dung tin nhắn..."
+                  placeholder={t('contact.messagePlaceholder')}
                   rows={5}
                   required
                   className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
@@ -138,15 +138,15 @@ export default function ContactPage() {
                 <div className="flex items-center gap-3">
                   <Clock className="h-5 w-5 text-amber-700" />
                   <div>
-                    <p className="font-medium text-gray-900">Lễ tân: 24/7</p>
-                    <p className="text-sm text-gray-600">Luôn sẵn sàng phục vụ bạn</p>
+                    <p className="font-medium text-gray-900">{t('contact.reception')}</p>
+                    <p className="text-sm text-gray-600">{t('contact.receptionDesc')}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <Clock className="h-5 w-5 text-amber-700" />
                   <div>
-                    <p className="font-medium text-gray-900">Nhà hàng: 06:00 - 22:00</p>
-                    <p className="text-sm text-gray-600">Bữa sáng: 06:00 - 09:30</p>
+                    <p className="font-medium text-gray-900">{t('contact.restaurant')}</p>
+                    <p className="text-sm text-gray-600">{t('contact.breakfast')}</p>
                   </div>
                 </div>
               </div>

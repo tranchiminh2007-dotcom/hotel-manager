@@ -185,6 +185,19 @@ export const translations: Record<Locale, Record<string, string>> = {
     'contact.breakfast': 'Bữa sáng: 06:00 - 09:30',
     'contact.success': 'Tin nhắn đã được gửi thành công! Chúng tôi sẽ phản hồi sớm nhất.',
 
+    // About sustainability items
+    'about.sus1': 'Sử dụng năng lượng tái tạo và thiết bị tiết kiệm điện',
+    'about.sus2': 'Giảm thiểu rác thải nhựa, khuyến khích khách sử dụng vật liệu tái chế',
+    'about.sus3': 'Ưu tiên sử dụng thực phẩm địa phương, hỗ trợ nông dân vùng Ninh Bình',
+    'about.sus4': 'Tham gia các hoạt động bảo tồn thiên nhiên và di sản văn hóa địa phương',
+
+    // Contact form labels
+    'contact.namePlaceholder': 'Nhập họ tên',
+    'contact.emailPlaceholder': 'Nhập email',
+    'contact.phonePlaceholder': 'Nhập số điện thoại',
+    'contact.subjectPlaceholder': 'Tiêu đề tin nhắn',
+    'contact.messagePlaceholder': 'Nhập nội dung tin nhắn...',
+
     // 404
     'notfound.title': 'Trang không tồn tại',
     'notfound.desc': 'Xin lỗi, trang bạn đang tìm kiếm không tồn tại hoặc đã được di chuyển.',
@@ -387,6 +400,19 @@ export const translations: Record<Locale, Record<string, string>> = {
     'contact.restaurant': 'Restaurant: 06:00 - 22:00',
     'contact.breakfast': 'Breakfast: 06:00 - 09:30',
     'contact.success': 'Message sent successfully! We will respond soon.',
+
+    // About sustainability items
+    'about.sus1': 'Using renewable energy and energy-efficient equipment',
+    'about.sus2': 'Reducing plastic waste, encouraging guests to use recyclable materials',
+    'about.sus3': 'Prioritizing local food sources, supporting Ninh Binh farmers',
+    'about.sus4': 'Participating in nature conservation and local cultural heritage activities',
+
+    // Contact form labels
+    'contact.namePlaceholder': 'Enter your name',
+    'contact.emailPlaceholder': 'Enter email',
+    'contact.phonePlaceholder': 'Enter phone number',
+    'contact.subjectPlaceholder': 'Message subject',
+    'contact.messagePlaceholder': 'Enter your message...',
 
     // 404
     'notfound.title': 'Page Not Found',

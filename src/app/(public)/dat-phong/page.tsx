@@ -8,6 +8,7 @@ import Input from '@/components/ui/Input'
 import Card from '@/components/ui/Card'
 import { placeholderImage } from '@/lib/utils'
 import { useLanguage } from '@/lib/language-context'
+import { translateData } from '@/lib/data-translations'
 
 interface AvailableRoom {
   id: string
@@ -31,7 +32,8 @@ interface RoomTypeResult {
 function BookingSearchContent() {
   const searchParams = useSearchParams()
   const preselectedType = searchParams.get('type') || ''
-  const { t } = useLanguage()
+  const { t, locale } = useLanguage()
+  const td = (s: string) => translateData(s, locale)
 
   const tomorrow = new Date()
   tomorrow.setDate(tomorrow.getDate() + 1)
@@ -136,9 +138,9 @@ function BookingSearchContent() {
                   <div className="md:col-span-2 p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900">{rt.name}</h3>
+                        <h3 className="text-xl font-bold text-gray-900">{td(rt.name)}</h3>
                         <div className="flex gap-4 mt-2 text-sm text-gray-500">
-                          <span className="flex items-center gap-1"><BedDouble className="h-4 w-4" /> {rt.bedType}</span>
+                          <span className="flex items-center gap-1"><BedDouble className="h-4 w-4" /> {td(rt.bedType)}</span>
                           <span className="flex items-center gap-1"><Users className="h-4 w-4" /> {t('booking.maxGuests')} {rt.maxGuests} {t('booking.guestsUnit')}</span>
                           <span className="flex items-center gap-1"><Maximize className="h-4 w-4" /> {rt.size} m²</span>
                         </div>

@@ -76,6 +76,12 @@ const dataMap: Record<string, string> = {
   'Tiết kiệm': 'Save',
   'Giảm': 'Off',
 
+  // Hotel story
+  'Khách Sạn Ninh Bình được thành lập với mong muốn mang đến cho du khách một nơi nghỉ dưỡng thoải mái, tiện nghi ngay giữa vùng đất di sản. Chúng tôi tự hào là điểm dừng chân lý tưởng để khám phá vẻ đẹp thiên nhiên và văn hóa của Ninh Bình. Với cam kết về chất lượng dịch vụ và sự thân thiện, chúng tôi luôn nỗ lực để mỗi khách hàng đều có trải nghiệm đáng nhớ.':
+    'Long Hai Hotel was established with the desire to provide travelers a comfortable and convenient place to stay in the heart of a heritage land. We are proud to be the ideal stop for exploring the natural beauty and culture of Ninh Binh. With our commitment to service quality and friendliness, we always strive to make every guest\'s experience memorable.',
+  'Khách sạn hiện đại giữa lòng di sản thiên nhiên Ninh Bình, gần Tràng An, Bái Đính và Phố Cổ Hoa Lư.':
+    'A modern hotel in the heart of Ninh Binh\'s natural heritage, near Trang An, Bai Dinh, and Hoa Lu Ancient Capital.',
+
   // Discount display
   'Tối thiểu': 'Minimum',
   'đêm': 'nights',

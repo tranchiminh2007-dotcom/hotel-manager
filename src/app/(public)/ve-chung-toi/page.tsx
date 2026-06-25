@@ -2,6 +2,7 @@ import { prisma } from '@/lib/prisma'
 import { placeholderImage } from '@/lib/utils'
 import PageHeader from '@/components/ui/PageHeader'
 import T from '@/components/ui/T'
+import TD from '@/components/ui/TD'
 
 export const metadata = {
   title: 'Về chúng tôi',
@@ -27,7 +28,7 @@ export default async function AboutPage() {
           <div className="flex flex-col justify-center">
             <h2 className="text-2xl font-bold text-gray-900 mb-4"><T k="about.story" /></h2>
             <p className="text-gray-600 leading-relaxed whitespace-pre-line">
-              {settings?.story || ''}
+              <TD>{settings?.story || ''}</TD>
             </p>
           </div>
         </div>
@@ -51,15 +52,10 @@ export default async function AboutPage() {
         <div className="mb-16">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center"><T k="about.sustainability" /></h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {[
-              'Sử dụng năng lượng tái tạo và thiết bị tiết kiệm điện',
-              'Giảm thiểu rác thải nhựa, khuyến khích khách sử dụng vật liệu tái chế',
-              'Ưu tiên sử dụng thực phẩm địa phương, hỗ trợ nông dân vùng Ninh Bình',
-              'Tham gia các hoạt động bảo tồn thiên nhiên và di sản văn hóa địa phương',
-            ].map((item) => (
-              <div key={item} className="flex items-start gap-3 p-4 bg-green-50 rounded-lg">
+            {['about.sus1', 'about.sus2', 'about.sus3', 'about.sus4'].map((key) => (
+              <div key={key} className="flex items-start gap-3 p-4 bg-green-50 rounded-lg">
                 <span className="text-green-600 font-bold mt-0.5">✓</span>
-                <p className="text-sm text-gray-700">{item}</p>
+                <p className="text-sm text-gray-700"><T k={key} /></p>
               </div>
             ))}
           </div>

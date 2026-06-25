@@ -152,11 +152,11 @@ export default async function HomePage() {
                 <Card key={promo.id} hover className="p-6 border-amber-200 bg-amber-50/50">
                   {promo.badgeText && (
                     <span className="inline-block bg-amber-700 text-white text-xs font-bold px-2 py-1 rounded mb-3">
-                      {promo.badgeText}
+                      <TD>{promo.badgeText}</TD>
                     </span>
                   )}
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{promo.title}</h3>
-                  <p className="text-sm text-gray-600 mb-4">{promo.description}</p>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2"><TD>{promo.title}</TD></h3>
+                  <p className="text-sm text-gray-600 mb-4"><TD>{promo.description}</TD></p>
                   <Link href="/dat-phong">
                     <Button size="sm"><T k="home.offers.bookNow" /></Button>
                   </Link>
