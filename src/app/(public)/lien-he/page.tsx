@@ -46,17 +46,25 @@ export default function ContactPage() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-          {[
-            { icon: MapPin, title: 'Địa chỉ', info: HOTEL_CONFIG.address },
-            { icon: Phone, title: 'Điện thoại', info: HOTEL_CONFIG.phone },
-            { icon: Mail, title: 'Email', info: HOTEL_CONFIG.email },
-          ].map((item) => (
-            <Card key={item.title} className="p-6 text-center">
-              <item.icon className="h-8 w-8 text-amber-700 mx-auto mb-3" />
-              <h3 className="font-semibold text-gray-900 mb-1">{item.title}</h3>
-              <p className="text-sm text-gray-600">{item.info}</p>
+          <Card className="p-6 text-center">
+            <MapPin className="h-8 w-8 text-amber-700 mx-auto mb-3" />
+            <h3 className="font-semibold text-gray-900 mb-1">Địa chỉ</h3>
+            <p className="text-sm text-gray-600">{HOTEL_CONFIG.address}</p>
+          </Card>
+          <a href={`tel:${HOTEL_CONFIG.phone.replace(/\s/g, '')}`}>
+            <Card className="p-6 text-center hover:shadow-md transition-shadow cursor-pointer">
+              <Phone className="h-8 w-8 text-amber-700 mx-auto mb-3" />
+              <h3 className="font-semibold text-gray-900 mb-1">Điện thoại</h3>
+              <p className="text-sm text-amber-700 font-medium underline">{HOTEL_CONFIG.phone}</p>
             </Card>
-          ))}
+          </a>
+          <a href={`mailto:${HOTEL_CONFIG.email}`}>
+            <Card className="p-6 text-center hover:shadow-md transition-shadow cursor-pointer">
+              <Mail className="h-8 w-8 text-amber-700 mx-auto mb-3" />
+              <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
+              <p className="text-sm text-amber-700 font-medium underline">{HOTEL_CONFIG.email}</p>
+            </Card>
+          </a>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

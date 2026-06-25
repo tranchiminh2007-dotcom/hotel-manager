@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import { Star, MapPin, Waves, UtensilsCrossed, Wifi, Car } from 'lucide-react'
+import { Star, Waves, UtensilsCrossed, Wifi, Car } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
+import HeroSection from '@/components/home/HeroSection'
 import { prisma } from '@/lib/prisma'
 import { formatVND } from '@/lib/format'
-import { HOTEL_CONFIG } from '@/lib/constants'
 import { placeholderImage } from '@/lib/utils'
 
 export default async function HomePage() {
@@ -29,33 +29,7 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative h-[600px] bg-gradient-to-br from-amber-900 to-amber-700 flex items-center">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{ backgroundImage: `url(${placeholderImage(1920, 600, 'Khách Sạn Ninh Bình')})` }}
-        />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">{HOTEL_CONFIG.name}</h1>
-          <p className="text-xl md:text-2xl mb-2 font-light">{HOTEL_CONFIG.tagline}</p>
-          <p className="text-lg mb-8 opacity-90 flex items-center justify-center gap-2">
-            <MapPin className="h-5 w-5" />
-            {HOTEL_CONFIG.address}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/dat-phong">
-              <Button size="lg" className="bg-white text-amber-800 hover:bg-gray-100">
-                Đặt phòng ngay
-              </Button>
-            </Link>
-            <Link href="/phong">
-              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/20 bg-white/10">
-                Xem phòng & giá
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* Featured Rooms */}
       <section className="py-16 bg-gray-50">
