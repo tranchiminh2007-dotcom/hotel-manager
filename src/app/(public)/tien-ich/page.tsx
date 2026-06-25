@@ -1,5 +1,7 @@
 import { prisma } from '@/lib/prisma'
 import Card from '@/components/ui/Card'
+import PageHeader from '@/components/ui/PageHeader'
+import T from '@/components/ui/T'
 import {
   Wifi, Car, UtensilsCrossed, Coffee, Clock, Shirt, Bike, TreePine,
 } from 'lucide-react'
@@ -11,13 +13,6 @@ export const metadata = {
 
 const iconMap: Record<string, React.ElementType> = {
   Wifi, Car, UtensilsCrossed, Coffee, Clock, Shirt, Bike, TreePine,
-}
-
-const categoryLabels: Record<string, string> = {
-  SERVICES: 'Dịch vụ',
-  DINING: 'Ẩm thực',
-  RECREATION: 'Giải trí & Thư giãn',
-  WELLNESS: 'Sức khỏe',
 }
 
 export default async function AmenitiesPage() {
@@ -32,17 +27,12 @@ export default async function AmenitiesPage() {
   return (
     <div className="py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-3">Tiện ích & Dịch vụ</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Mọi thứ bạn cần cho kỳ nghỉ hoàn hảo tại Ninh Bình đều có tại khách sạn của chúng tôi.
-          </p>
-        </div>
+        <PageHeader titleKey="amenities.title" descKey="amenities.desc" />
 
         {Object.entries(grouped).map(([category, items]) => (
           <div key={category} className="mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              {categoryLabels[category] || category}
+              <T k={`amenities.cat.${category}`} />
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {items.map((amenity) => {

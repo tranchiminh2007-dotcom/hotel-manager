@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { BedDouble, Users, Maximize } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
+import PageHeader from '@/components/ui/PageHeader'
+import T from '@/components/ui/T'
 import { prisma } from '@/lib/prisma'
 import { formatVND } from '@/lib/format'
 import { placeholderImage } from '@/lib/utils'
@@ -20,12 +22,7 @@ export default async function RoomsPage() {
   return (
     <div className="py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-3">Phòng & Giá</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Chọn loại phòng phù hợp với nhu cầu của bạn. Tất cả phòng đều được trang bị đầy đủ tiện nghi hiện đại.
-          </p>
-        </div>
+        <PageHeader titleKey="rooms.title" descKey="rooms.desc" />
 
         <div className="space-y-12">
           {roomTypes.map((rt) => {

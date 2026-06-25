@@ -119,6 +119,77 @@ export const translations: Record<Locale, Record<string, string>> = {
     'reviews.noReviews': 'Chưa có đánh giá nào.',
     'reviews.reviews': 'đánh giá',
 
+    // Rooms page
+    'rooms.title': 'Phòng & Giá',
+    'rooms.desc': 'Chọn loại phòng phù hợp với nhu cầu của bạn. Tất cả phòng đều được trang bị đầy đủ tiện nghi hiện đại.',
+    'rooms.maxGuests': 'Tối đa',
+    'rooms.guests': 'khách',
+    'rooms.detail': 'Chi tiết',
+    'rooms.bookRoom': 'Đặt phòng',
+    'rooms.perNight': '/ đêm',
+    'rooms.amenities': 'Tiện nghi phòng',
+    'rooms.backToList': '← Quay lại danh sách phòng',
+    'rooms.bookNow': 'Đặt phòng ngay',
+    'rooms.bookDirect': 'Đặt trực tiếp để nhận giá tốt nhất',
+
+    // Amenities page
+    'amenities.title': 'Tiện ích & Dịch vụ',
+    'amenities.desc': 'Mọi thứ bạn cần cho kỳ nghỉ hoàn hảo tại Ninh Bình đều có tại khách sạn của chúng tôi.',
+    'amenities.cat.SERVICES': 'Dịch vụ',
+    'amenities.cat.DINING': 'Ẩm thực',
+    'amenities.cat.RECREATION': 'Giải trí & Thư giãn',
+    'amenities.cat.WELLNESS': 'Sức khỏe',
+
+    // About page
+    'about.title': 'Về chúng tôi',
+    'about.story': 'Câu chuyện của chúng tôi',
+    'about.values': 'Giá trị cốt lõi',
+    'about.sustainability': 'Cam kết bền vững',
+    'about.val1.title': 'Chất lượng dịch vụ',
+    'about.val1.desc': 'Chúng tôi luôn đặt sự hài lòng của khách hàng lên hàng đầu, với đội ngũ nhân viên tận tâm và chuyên nghiệp.',
+    'about.val2.title': 'Bền vững & Thân thiện',
+    'about.val2.desc': 'Cam kết bảo vệ môi trường và phát triển bền vững, góp phần gìn giữ vẻ đẹp thiên nhiên Ninh Bình cho thế hệ sau.',
+    'about.val3.title': 'Trải nghiệm văn hóa',
+    'about.val3.desc': 'Kết nối du khách với văn hóa và con người Ninh Bình, tạo nên những kỷ niệm đáng nhớ trong mỗi chuyến đi.',
+
+    // Offers page
+    'offers.title': 'Ưu đãi đặc biệt',
+    'offers.desc': 'Đặt phòng trực tiếp với chúng tôi để nhận nhiều ưu đãi hấp dẫn. Giá tốt nhất, đảm bảo!',
+    'offers.promotions': 'Chương trình khuyến mãi',
+    'offers.discountCodes': 'Mã giảm giá',
+    'offers.bookNow': 'Đặt ngay',
+    'offers.until': 'Đến',
+    'offers.minNights': 'Tối thiểu',
+    'offers.nightsUnit': 'đêm',
+    'offers.whyDirect': 'Tại sao đặt trực tiếp?',
+    'offers.bestPrice': 'Giá tốt nhất',
+    'offers.bestPrice.desc': 'Đảm bảo giá thấp hơn các trang đặt phòng khác',
+    'offers.exclusive': 'Ưu đãi riêng',
+    'offers.exclusive.desc': 'Mã giảm giá và quà tặng chỉ dành cho đặt trực tiếp',
+    'offers.support': 'Hỗ trợ nhanh',
+    'offers.support.desc': 'Liên hệ trực tiếp, thay đổi linh hoạt, hủy miễn phí',
+
+    // Area page
+    'area.title': 'Khu vực lân cận',
+    'area.desc': 'Ninh Bình - vùng đất di sản với nhiều danh thắng nổi tiếng. Khám phá những điểm đến tuyệt vời ngay gần khách sạn.',
+    'area.cat.NATURE': 'Thiên nhiên',
+    'area.cat.CULTURE': 'Văn hóa & Lịch sử',
+    'area.cat.FOOD': 'Ẩm thực',
+    'area.cat.ACTIVITY': 'Hoạt động',
+    'area.viewMap': 'Xem bản đồ',
+
+    // Contact page extras
+    'contact.reception': 'Lễ tân: 24/7',
+    'contact.receptionDesc': 'Luôn sẵn sàng phục vụ bạn',
+    'contact.restaurant': 'Nhà hàng: 06:00 - 22:00',
+    'contact.breakfast': 'Bữa sáng: 06:00 - 09:30',
+    'contact.success': 'Tin nhắn đã được gửi thành công! Chúng tôi sẽ phản hồi sớm nhất.',
+
+    // 404
+    'notfound.title': 'Trang không tồn tại',
+    'notfound.desc': 'Xin lỗi, trang bạn đang tìm kiếm không tồn tại hoặc đã được di chuyển.',
+    'notfound.home': 'Về trang chủ',
+
     // Footer
     'footer.quickLinks': 'Liên kết nhanh',
     'footer.explore': 'Khám phá',
@@ -250,6 +321,77 @@ export const translations: Record<Locale, Record<string, string>> = {
     'reviews.submitting': 'Submitting...',
     'reviews.noReviews': 'No reviews yet.',
     'reviews.reviews': 'reviews',
+
+    // Rooms page
+    'rooms.title': 'Rooms & Rates',
+    'rooms.desc': 'Choose the room that suits your needs. All rooms are fully equipped with modern amenities.',
+    'rooms.maxGuests': 'Max',
+    'rooms.guests': 'guests',
+    'rooms.detail': 'Details',
+    'rooms.bookRoom': 'Book Room',
+    'rooms.perNight': '/ night',
+    'rooms.amenities': 'Room Amenities',
+    'rooms.backToList': '← Back to room list',
+    'rooms.bookNow': 'Book Now',
+    'rooms.bookDirect': 'Book directly for the best rate',
+
+    // Amenities page
+    'amenities.title': 'Amenities & Services',
+    'amenities.desc': 'Everything you need for a perfect stay in Ninh Binh is available at our hotel.',
+    'amenities.cat.SERVICES': 'Services',
+    'amenities.cat.DINING': 'Dining',
+    'amenities.cat.RECREATION': 'Recreation & Relaxation',
+    'amenities.cat.WELLNESS': 'Wellness',
+
+    // About page
+    'about.title': 'About Us',
+    'about.story': 'Our Story',
+    'about.values': 'Core Values',
+    'about.sustainability': 'Sustainability Commitment',
+    'about.val1.title': 'Service Quality',
+    'about.val1.desc': 'We always put customer satisfaction first, with a dedicated and professional team.',
+    'about.val2.title': 'Sustainable & Friendly',
+    'about.val2.desc': 'Committed to environmental protection and sustainable development, preserving the beauty of Ninh Binh.',
+    'about.val3.title': 'Cultural Experience',
+    'about.val3.desc': 'Connecting visitors with the culture and people of Ninh Binh, creating memorable experiences.',
+
+    // Offers page
+    'offers.title': 'Special Offers',
+    'offers.desc': 'Book directly with us for the best deals. Best price guaranteed!',
+    'offers.promotions': 'Promotions',
+    'offers.discountCodes': 'Discount Codes',
+    'offers.bookNow': 'Book Now',
+    'offers.until': 'Until',
+    'offers.minNights': 'Minimum',
+    'offers.nightsUnit': 'nights',
+    'offers.whyDirect': 'Why Book Direct?',
+    'offers.bestPrice': 'Best Price',
+    'offers.bestPrice.desc': 'Guaranteed lower than other booking sites',
+    'offers.exclusive': 'Exclusive Offers',
+    'offers.exclusive.desc': 'Discount codes and gifts only for direct bookings',
+    'offers.support': 'Fast Support',
+    'offers.support.desc': 'Direct contact, flexible changes, free cancellation',
+
+    // Area page
+    'area.title': 'Local Area Guide',
+    'area.desc': 'Ninh Binh — a heritage land with famous scenic spots. Discover amazing destinations near our hotel.',
+    'area.cat.NATURE': 'Nature',
+    'area.cat.CULTURE': 'Culture & History',
+    'area.cat.FOOD': 'Food & Dining',
+    'area.cat.ACTIVITY': 'Activities',
+    'area.viewMap': 'View Map',
+
+    // Contact page extras
+    'contact.reception': 'Reception: 24/7',
+    'contact.receptionDesc': 'Always ready to serve you',
+    'contact.restaurant': 'Restaurant: 06:00 - 22:00',
+    'contact.breakfast': 'Breakfast: 06:00 - 09:30',
+    'contact.success': 'Message sent successfully! We will respond soon.',
+
+    // 404
+    'notfound.title': 'Page Not Found',
+    'notfound.desc': 'Sorry, the page you are looking for does not exist or has been moved.',
+    'notfound.home': 'Back to Home',
 
     // Footer
     'footer.quickLinks': 'Quick Links',

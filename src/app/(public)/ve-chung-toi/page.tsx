@@ -1,5 +1,7 @@
 import { prisma } from '@/lib/prisma'
 import { placeholderImage } from '@/lib/utils'
+import PageHeader from '@/components/ui/PageHeader'
+import T from '@/components/ui/T'
 
 export const metadata = {
   title: 'Về chúng tôi',
@@ -12,12 +14,7 @@ export default async function AboutPage() {
   return (
     <div className="py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-3">Về chúng tôi</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            {settings?.description || 'Khách sạn hiện đại giữa lòng di sản thiên nhiên Ninh Bình.'}
-          </p>
-        </div>
+        <PageHeader titleKey="about.title" />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           <div className="aspect-[4/3] rounded-xl overflow-hidden bg-gray-200">
@@ -28,7 +25,7 @@ export default async function AboutPage() {
             />
           </div>
           <div className="flex flex-col justify-center">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Câu chuyện của chúng tôi</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4"><T k="about.story" /></h2>
             <p className="text-gray-600 leading-relaxed whitespace-pre-line">
               {settings?.story || ''}
             </p>
@@ -36,32 +33,23 @@ export default async function AboutPage() {
         </div>
 
         <div className="bg-amber-50 rounded-2xl p-8 lg:p-12 mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Giá trị cốt lõi</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center"><T k="about.values" /></h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              {
-                title: 'Chất lượng dịch vụ',
-                desc: 'Chúng tôi luôn đặt sự hài lòng của khách hàng lên hàng đầu, với đội ngũ nhân viên tận tâm và chuyên nghiệp.',
-              },
-              {
-                title: 'Bền vững & Thân thiện',
-                desc: 'Cam kết bảo vệ môi trường và phát triển bền vững, góp phần gìn giữ vẻ đẹp thiên nhiên Ninh Bình cho thế hệ sau.',
-              },
-              {
-                title: 'Trải nghiệm văn hóa',
-                desc: 'Kết nối du khách với văn hóa và con người Ninh Bình, tạo nên những kỷ niệm đáng nhớ trong mỗi chuyến đi.',
-              },
+              { titleKey: 'about.val1.title', descKey: 'about.val1.desc' },
+              { titleKey: 'about.val2.title', descKey: 'about.val2.desc' },
+              { titleKey: 'about.val3.title', descKey: 'about.val3.desc' },
             ].map((v) => (
-              <div key={v.title} className="text-center">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{v.title}</h3>
-                <p className="text-sm text-gray-600">{v.desc}</p>
+              <div key={v.titleKey} className="text-center">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2"><T k={v.titleKey} /></h3>
+                <p className="text-sm text-gray-600"><T k={v.descKey} /></p>
               </div>
             ))}
           </div>
         </div>
 
         <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Cam kết bền vững</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center"><T k="about.sustainability" /></h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {[
               'Sử dụng năng lượng tái tạo và thiết bị tiết kiệm điện',

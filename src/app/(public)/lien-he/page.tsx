@@ -6,6 +6,7 @@ import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { HOTEL_CONFIG } from '@/lib/constants'
+import { useLanguage } from '@/lib/language-context'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -13,6 +14,7 @@ export default function ContactPage() {
   })
   const [submitting, setSubmitting] = useState(false)
   const [result, setResult] = useState('')
+  const { t } = useLanguage()
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -39,29 +41,29 @@ export default function ContactPage() {
     <div className="py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-3">Liên hệ</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-3">{t('contact.title')}</h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Chúng tôi luôn sẵn sàng hỗ trợ bạn. Hãy liên hệ để được tư vấn và đặt phòng.
+            {t('contact.desc')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
           <Card className="p-6 text-center">
             <MapPin className="h-8 w-8 text-amber-700 mx-auto mb-3" />
-            <h3 className="font-semibold text-gray-900 mb-1">Địa chỉ</h3>
+            <h3 className="font-semibold text-gray-900 mb-1">{t('contact.address')}</h3>
             <p className="text-sm text-gray-600">{HOTEL_CONFIG.address}</p>
           </Card>
           <a href={`tel:${HOTEL_CONFIG.phone.replace(/\s/g, '')}`}>
             <Card className="p-6 text-center hover:shadow-md transition-shadow cursor-pointer">
               <Phone className="h-8 w-8 text-amber-700 mx-auto mb-3" />
-              <h3 className="font-semibold text-gray-900 mb-1">Điện thoại</h3>
+              <h3 className="font-semibold text-gray-900 mb-1">{t('contact.phone')}</h3>
               <p className="text-sm text-amber-700 font-medium underline">{HOTEL_CONFIG.phone}</p>
             </Card>
           </a>
           <a href={`mailto:${HOTEL_CONFIG.email}`}>
             <Card className="p-6 text-center hover:shadow-md transition-shadow cursor-pointer">
               <Mail className="h-8 w-8 text-amber-700 mx-auto mb-3" />
-              <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
+              <h3 className="font-semibold text-gray-900 mb-1">{t('contact.email')}</h3>
               <p className="text-sm text-amber-700 font-medium underline">{HOTEL_CONFIG.email}</p>
             </Card>
           </a>
@@ -69,7 +71,7 @@ export default function ContactPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <Card className="p-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-6">Gửi tin nhắn</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-6">{t('contact.sendMessage')}</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
@@ -124,14 +126,14 @@ export default function ContactPage() {
               )}
 
               <Button type="submit" className="w-full" disabled={submitting}>
-                {submitting ? 'Đang gửi...' : 'Gửi tin nhắn'}
+                {submitting ? t('contact.sending') : t('contact.send')}
               </Button>
             </form>
           </Card>
 
           <div>
             <Card className="p-6 mb-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">Giờ làm việc</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-4">{t('contact.hours')}</h2>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
                   <Clock className="h-5 w-5 text-amber-700" />

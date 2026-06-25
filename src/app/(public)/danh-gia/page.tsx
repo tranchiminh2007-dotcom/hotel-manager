@@ -5,6 +5,7 @@ import { Star } from 'lucide-react'
 import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
+import { useLanguage } from '@/lib/language-context'
 
 export default function ReviewsPage() {
   const [reviews, setReviews] = useState<{ id: string; guestName: string; rating: number; content: string | null; createdAt: string }[]>([])
@@ -12,6 +13,7 @@ export default function ReviewsPage() {
   const [formData, setFormData] = useState({ guestName: '', rating: 0, content: '' })
   const [submitting, setSubmitting] = useState(false)
   const [message, setMessage] = useState('')
+  const { t } = useLanguage()
 
   async function loadReviews() {
     const res = await fetch('/api/reviews')
@@ -57,12 +59,12 @@ export default function ReviewsPage() {
     <div className="py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-3">Đánh giá của khách</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-3">{t('reviews.title')}</h1>
           {reviews.length > 0 && (
             <div className="flex items-center justify-center gap-2 mt-4">
               <Star className="h-8 w-8 text-amber-400 fill-current" />
               <span className="text-4xl font-bold text-gray-900">{avgRating}</span>
-              <span className="text-gray-500 text-lg">/ 5 ({reviews.length} đánh giá)</span>
+              <span className="text-gray-500 text-lg">/ 5 ({reviews.length} {t('reviews.reviews')})</span>
             </div>
           )}
         </div>
@@ -95,7 +97,7 @@ export default function ReviewsPage() {
 
           <div>
             <Card className="p-6 sticky top-24">
-              <h2 className="text-lg font-bold text-gray-900 mb-4">Viết đánh giá</h2>
+              <h2 className="text-lg font-bold text-gray-900 mb-4">{t('reviews.writeReview')}</h2>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <Input
                   label="Họ tên"
@@ -145,7 +147,7 @@ export default function ReviewsPage() {
                 )}
 
                 <Button type="submit" className="w-full" disabled={submitting || formData.rating === 0}>
-                  {submitting ? 'Đang gửi...' : 'Gửi đánh giá'}
+                  {submitting ? t('reviews.submitting') : t('reviews.submit')}
                 </Button>
               </form>
             </Card>

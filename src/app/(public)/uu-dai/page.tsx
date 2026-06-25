@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { Tag, Calendar, Percent } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
+import PageHeader from '@/components/ui/PageHeader'
+import T from '@/components/ui/T'
 import { prisma } from '@/lib/prisma'
 import { formatDate, formatVND } from '@/lib/format'
 
@@ -26,12 +28,7 @@ export default async function OffersPage() {
   return (
     <div className="py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-3">Ưu đãi đặc biệt</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Đặt phòng trực tiếp với chúng tôi để nhận nhiều ưu đãi hấp dẫn. Giá tốt nhất, đảm bảo!
-          </p>
-        </div>
+        <PageHeader titleKey="offers.title" descKey="offers.desc" />
 
         {promotions.length > 0 && (
           <div className="mb-16">
