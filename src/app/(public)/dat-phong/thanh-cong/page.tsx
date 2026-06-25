@@ -1,5 +1,6 @@
 'use client'
 
+import { Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { CheckCircle, Phone } from 'lucide-react'
@@ -7,7 +8,7 @@ import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import { HOTEL_CONFIG } from '@/lib/constants'
 
-export default function BookingSuccessPage() {
+function SuccessContent() {
   const searchParams = useSearchParams()
   const code = searchParams.get('code') || ''
 
@@ -41,5 +42,13 @@ export default function BookingSuccessPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function BookingSuccessPage() {
+  return (
+    <Suspense fallback={<div className="py-16 text-center text-gray-500">Đang tải...</div>}>
+      <SuccessContent />
+    </Suspense>
   )
 }

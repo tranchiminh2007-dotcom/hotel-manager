@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Search, BedDouble, Users, Maximize } from 'lucide-react'
 import Button from '@/components/ui/Button'
@@ -27,7 +27,7 @@ interface RoomTypeResult {
   availableCount: number
 }
 
-export default function BookingSearchPage() {
+function BookingSearchContent() {
   const searchParams = useSearchParams()
   const preselectedType = searchParams.get('type') || ''
 
@@ -174,5 +174,13 @@ export default function BookingSearchPage() {
         )}
       </div>
     </div>
+  )
+}
+
+export default function BookingSearchPage() {
+  return (
+    <Suspense fallback={<div className="py-16 text-center text-gray-500">Đang tải...</div>}>
+      <BookingSearchContent />
+    </Suspense>
   )
 }

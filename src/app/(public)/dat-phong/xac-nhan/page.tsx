@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { CalendarDays, Users } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import Card from '@/components/ui/Card'
 
-export default function BookingConfirmPage() {
+function BookingConfirmContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
 
@@ -240,5 +240,13 @@ export default function BookingConfirmPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function BookingConfirmPage() {
+  return (
+    <Suspense fallback={<div className="py-16 text-center text-gray-500">Đang tải...</div>}>
+      <BookingConfirmContent />
+    </Suspense>
   )
 }
