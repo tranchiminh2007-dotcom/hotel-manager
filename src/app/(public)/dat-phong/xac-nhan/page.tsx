@@ -6,10 +6,12 @@ import { CalendarDays, Users } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import Card from '@/components/ui/Card'
+import { useLanguage } from '@/lib/language-context'
 
 function BookingConfirmContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
+  const { t } = useLanguage()
 
   const roomId = searchParams.get('roomId') || ''
   const checkIn = searchParams.get('checkIn') || ''
@@ -104,52 +106,48 @@ function BookingConfirmContent() {
   return (
     <div className="py-12">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center">Xác nhận đặt phòng</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center">{t('confirm.title')}</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
             <Card className="p-6">
-              <h2 className="text-lg font-bold text-gray-900 mb-4">Thông tin khách hàng</h2>
+              <h2 className="text-lg font-bold text-gray-900 mb-4">{t('confirm.guestInfo')}</h2>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <Input
-                    label="Họ tên *"
+                    label={`${t('confirm.fullName')} *`}
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    placeholder="Nhập họ tên"
                     required
                   />
                   <Input
-                    label="Số điện thoại *"
+                    label={`${t('confirm.phone')} *`}
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="Nhập số điện thoại"
                     required
                   />
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <Input
-                    label="Email"
+                    label={t('confirm.email')}
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="Nhập email (tùy chọn)"
                   />
                   <Input
-                    label="CMND/CCCD"
+                    label={t('confirm.idNumber')}
                     value={formData.idNumber}
                     onChange={(e) => setFormData({ ...formData, idNumber: e.target.value })}
-                    placeholder="Nhập số CMND/CCCD"
                   />
                 </div>
                 <Input
-                  label="Quốc tịch"
+                  label={t('confirm.nationality')}
                   value={formData.nationality}
                   onChange={(e) => setFormData({ ...formData, nationality: e.target.value })}
                 />
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Yêu cầu đặc biệt</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">{t('confirm.specialRequests')}</label>
                   <textarea
                     value={formData.specialRequests}
                     onChange={(e) => setFormData({ ...formData, specialRequests: e.target.value })}
@@ -160,7 +158,7 @@ function BookingConfirmContent() {
                 </div>
 
                 <div className="pt-4 border-t">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Mã giảm giá</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">{t('confirm.discountCode')}</label>
                   <div className="flex gap-2">
                     <Input
                       value={formData.discountCode}
@@ -169,7 +167,7 @@ function BookingConfirmContent() {
                       className="flex-1"
                     />
                     <Button type="button" variant="outline" onClick={validateDiscount}>
-                      Áp dụng
+                      {t('confirm.apply')}
                     </Button>
                   </div>
                   {discount && <p className="text-sm text-green-600 mt-1">{discount.description} (-{formatVND(discount.discountAmount)})</p>}
@@ -179,7 +177,7 @@ function BookingConfirmContent() {
                 {error && <p className="text-sm text-red-600">{error}</p>}
 
                 <Button type="submit" size="lg" className="w-full" disabled={submitting}>
-                  {submitting ? 'Đang xử lý...' : `Xác nhận đặt phòng - ${formatVND(finalTotal)}`}
+                  {submitting ? t('confirm.processing') : `${t('confirm.submit')} - ${formatVND(finalTotal)}`}
                 </Button>
               </form>
             </Card>
@@ -187,50 +185,50 @@ function BookingConfirmContent() {
 
           <div>
             <Card className="p-6 sticky top-24">
-              <h2 className="text-lg font-bold text-gray-900 mb-4">Thông tin đặt phòng</h2>
+              <h2 className="text-lg font-bold text-gray-900 mb-4">{t('confirm.bookingInfo')}</h2>
               <div className="space-y-3 text-sm">
                 {roomInfo && (
                   <>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Loại phòng</span>
+                      <span className="text-gray-600">{t('confirm.roomType')}</span>
                       <span className="font-medium">{roomInfo.typeName}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Phòng</span>
-                      <span className="font-medium">{roomInfo.number} (Tầng {roomInfo.floor})</span>
+                      <span className="text-gray-600">{t('booking.room')}</span>
+                      <span className="font-medium">{roomInfo.number} ({t('booking.floor')} {roomInfo.floor})</span>
                     </div>
                   </>
                 )}
                 <div className="flex justify-between">
-                  <span className="text-gray-600 flex items-center gap-1"><CalendarDays className="h-4 w-4" /> Nhận phòng</span>
+                  <span className="text-gray-600 flex items-center gap-1"><CalendarDays className="h-4 w-4" /> {t('booking.checkIn')}</span>
                   <span className="font-medium">{new Date(checkIn).toLocaleDateString('vi-VN')}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600 flex items-center gap-1"><CalendarDays className="h-4 w-4" /> Trả phòng</span>
+                  <span className="text-gray-600 flex items-center gap-1"><CalendarDays className="h-4 w-4" /> {t('booking.checkOut')}</span>
                   <span className="font-medium">{new Date(checkOut).toLocaleDateString('vi-VN')}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600 flex items-center gap-1"><Users className="h-4 w-4" /> Số khách</span>
+                  <span className="text-gray-600 flex items-center gap-1"><Users className="h-4 w-4" /> {t('booking.guests')}</span>
                   <span className="font-medium">{guests}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Số đêm</span>
+                  <span className="text-gray-600">{t('confirm.numNights')}</span>
                   <span className="font-medium">{nights}</span>
                 </div>
 
                 <div className="border-t pt-3 mt-3">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Giá phòng × {nights} đêm</span>
+                    <span className="text-gray-600">{t('confirm.pricePerNight')} × {nights} {t('booking.nights')}</span>
                     <span>{formatVND(baseTotal)}</span>
                   </div>
                   {discount && (
                     <div className="flex justify-between text-green-600">
-                      <span>Giảm giá</span>
+                      <span>{t('confirm.discount')}</span>
                       <span>-{formatVND(discount.discountAmount)}</span>
                     </div>
                   )}
                   <div className="flex justify-between font-bold text-lg mt-2 pt-2 border-t">
-                    <span>Tổng cộng</span>
+                    <span>{t('confirm.totalPrice')}</span>
                     <span className="text-amber-700">{formatVND(finalTotal)}</span>
                   </div>
                 </div>

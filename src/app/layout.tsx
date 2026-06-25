@@ -12,8 +12,8 @@ const beVietnamPro = Be_Vietnam_Pro({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Khách Sạn Ninh Bình - Nghỉ dưỡng giữa lòng di sản',
-    template: '%s | Khách Sạn Ninh Bình',
+    default: 'Long Hải Hotel - Nghỉ dưỡng giữa lòng di sản',
+    template: '%s | Long Hải Hotel',
   },
   description: 'Khách sạn tại Ninh Bình với phòng nghỉ thoải mái, gần Tràng An, Bái Đính, Phố Cổ Hoa Lư. Đặt phòng trực tiếp để nhận ưu đãi tốt nhất.',
 }

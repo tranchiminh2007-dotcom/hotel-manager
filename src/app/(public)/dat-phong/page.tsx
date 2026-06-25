@@ -7,6 +7,7 @@ import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import Card from '@/components/ui/Card'
 import { placeholderImage } from '@/lib/utils'
+import { useLanguage } from '@/lib/language-context'
 
 interface AvailableRoom {
   id: string
@@ -30,6 +31,7 @@ interface RoomTypeResult {
 function BookingSearchContent() {
   const searchParams = useSearchParams()
   const preselectedType = searchParams.get('type') || ''
+  const { t } = useLanguage()
 
   const tomorrow = new Date()
   tomorrow.setDate(tomorrow.getDate() + 1)
@@ -70,14 +72,14 @@ function BookingSearchContent() {
     <div className="py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-3">Đặt phòng</h1>
-          <p className="text-gray-600">Chọn ngày và tìm phòng trống</p>
+          <h1 className="text-4xl font-bold text-gray-900 mb-3">{t('booking.title')}</h1>
+          <p className="text-gray-600">{t('booking.subtitle')}</p>
         </div>
 
         <Card className="p-6 mb-8">
           <form onSubmit={handleSearch} className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
             <Input
-              label="Ngày nhận phòng"
+              label={t('booking.checkIn')}
               type="date"
               value={checkIn}
               onChange={(e) => setCheckIn(e.target.value)}
@@ -85,7 +87,7 @@ function BookingSearchContent() {
               required
             />
             <Input
-              label="Ngày trả phòng"
+              label={t('booking.checkOut')}
               type="date"
               value={checkOut}
               onChange={(e) => setCheckOut(e.target.value)}
@@ -93,7 +95,7 @@ function BookingSearchContent() {
               required
             />
             <Input
-              label="Số khách"
+              label={t('booking.guests')}
               type="number"
               value={guests}
               onChange={(e) => setGuests(e.target.value)}
@@ -103,23 +105,22 @@ function BookingSearchContent() {
             />
             <Button type="submit" size="lg" disabled={loading} className="flex items-center gap-2">
               <Search className="h-4 w-4" />
-              {loading ? 'Đang tìm...' : 'Tìm phòng'}
+              {loading ? t('booking.searching') : t('booking.search')}
             </Button>
           </form>
         </Card>
 
         {searched && results.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">Không tìm thấy phòng trống cho ngày đã chọn.</p>
-            <p className="text-gray-400 mt-2">Vui lòng thử ngày khác hoặc liên hệ trực tiếp.</p>
+            <p className="text-gray-500 text-lg">{t('booking.noResults')}</p>
+            <p className="text-gray-400 mt-2">{t('booking.tryOther')}</p>
           </div>
         )}
 
         {results.length > 0 && (
           <div className="space-y-6">
             <p className="text-gray-600">
-              Tìm thấy <strong>{results.reduce((s, r) => s + r.availableCount, 0)}</strong> phòng trống
-              cho <strong>{nights}</strong> đêm
+              {t('booking.found')} <strong>{results.reduce((s, r) => s + r.availableCount, 0)}</strong> {t('booking.available')} {t('booking.for')} <strong>{nights}</strong> {t('booking.nights')}
             </p>
 
             {results.map((rt) => (
@@ -138,15 +139,15 @@ function BookingSearchContent() {
                         <h3 className="text-xl font-bold text-gray-900">{rt.name}</h3>
                         <div className="flex gap-4 mt-2 text-sm text-gray-500">
                           <span className="flex items-center gap-1"><BedDouble className="h-4 w-4" /> {rt.bedType}</span>
-                          <span className="flex items-center gap-1"><Users className="h-4 w-4" /> Tối đa {rt.maxGuests} khách</span>
+                          <span className="flex items-center gap-1"><Users className="h-4 w-4" /> {t('booking.maxGuests')} {rt.maxGuests} {t('booking.guestsUnit')}</span>
                           <span className="flex items-center gap-1"><Maximize className="h-4 w-4" /> {rt.size} m²</span>
                         </div>
                       </div>
                       <div className="text-right">
                         <p className="text-2xl font-bold text-amber-700">{formatVND(rt.basePrice)}</p>
-                        <p className="text-sm text-gray-500">/ đêm</p>
+                        <p className="text-sm text-gray-500">{t('rooms.perNight')}</p>
                         <p className="text-sm font-semibold text-gray-900 mt-1">
-                          Tổng: {formatVND(rt.basePrice * nights)}
+                          {t('booking.total')}: {formatVND(rt.basePrice * nights)}
                         </p>
                       </div>
                     </div>
@@ -158,13 +159,13 @@ function BookingSearchContent() {
                           href={`/dat-phong/xac-nhan?roomId=${room.id}&checkIn=${checkIn}&checkOut=${checkOut}&guests=${guests}`}
                         >
                           <Button variant="outline" size="sm">
-                            Phòng {room.number} (Tầng {room.floor})
+                            {t('booking.room')} {room.number} ({t('booking.floor')} {room.floor})
                           </Button>
                         </a>
                       ))}
                     </div>
                     <p className="text-xs text-gray-400 mt-2">
-                      Còn {rt.availableCount} phòng trống — chọn phòng để tiếp tục
+                      {rt.availableCount} {t('booking.remaining')}
                     </p>
                   </div>
                 </div>

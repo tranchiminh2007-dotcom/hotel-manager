@@ -3,6 +3,7 @@ import { Star, Waves, UtensilsCrossed, Wifi, Car } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import HeroSection from '@/components/home/HeroSection'
+import T from '@/components/ui/T'
 import { prisma } from '@/lib/prisma'
 import { formatVND } from '@/lib/format'
 import { placeholderImage } from '@/lib/utils'
@@ -35,9 +36,9 @@ export default async function HomePage() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">Phòng nghỉ của chúng tôi</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3"><T k="home.rooms.title" /></h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Lựa chọn phòng phù hợp với nhu cầu của bạn, từ phòng đơn ấm cúng đến phòng family rộng rãi cho cả gia đình.
+              <T k="home.rooms.desc" />
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -56,10 +57,10 @@ export default async function HomePage() {
                   <div className="flex items-center justify-between">
                     <div>
                       <span className="text-2xl font-bold text-amber-700">{formatVND(rt.basePrice)}</span>
-                      <span className="text-gray-500 text-sm"> / đêm</span>
+                      <span className="text-gray-500 text-sm"> <T k="home.rooms.perNight" /></span>
                     </div>
                     <Link href={`/phong/${rt.slug}`}>
-                      <Button size="sm">Xem chi tiết</Button>
+                      <Button size="sm"><T k="home.rooms.viewDetail" /></Button>
                     </Link>
                   </div>
                 </div>
@@ -73,26 +74,26 @@ export default async function HomePage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">Tiện ích & Dịch vụ</h2>
-            <p className="text-gray-600">Mọi thứ bạn cần cho kỳ nghỉ hoàn hảo</p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3"><T k="home.amenities.title" /></h2>
+            <p className="text-gray-600"><T k="home.amenities.desc" /></p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { icon: Wifi, label: 'WiFi miễn phí', desc: 'Tốc độ cao toàn khu vực' },
-              { icon: Car, label: 'Bãi đỗ xe', desc: 'Miễn phí cho khách lưu trú' },
-              { icon: UtensilsCrossed, label: 'Nhà hàng', desc: 'Ẩm thực địa phương' },
-              { icon: Waves, label: 'Khu vực thư giãn', desc: 'Không gian yên tĩnh' },
+              { icon: Wifi, labelKey: 'amenity.wifi', descKey: 'amenity.wifi.desc' },
+              { icon: Car, labelKey: 'amenity.parking', descKey: 'amenity.parking.desc' },
+              { icon: UtensilsCrossed, labelKey: 'amenity.restaurant', descKey: 'amenity.restaurant.desc' },
+              { icon: Waves, labelKey: 'amenity.relax', descKey: 'amenity.relax.desc' },
             ].map((item) => (
-              <div key={item.label} className="text-center p-6 rounded-xl hover:bg-amber-50 transition-colors">
+              <div key={item.labelKey} className="text-center p-6 rounded-xl hover:bg-amber-50 transition-colors">
                 <item.icon className="h-10 w-10 text-amber-700 mx-auto mb-3" />
-                <h3 className="font-semibold text-gray-900 mb-1">{item.label}</h3>
-                <p className="text-sm text-gray-600">{item.desc}</p>
+                <h3 className="font-semibold text-gray-900 mb-1"><T k={item.labelKey} /></h3>
+                <p className="text-sm text-gray-600"><T k={item.descKey} /></p>
               </div>
             ))}
           </div>
           <div className="text-center mt-8">
             <Link href="/tien-ich">
-              <Button variant="outline">Xem tất cả tiện ích</Button>
+              <Button variant="outline"><T k="home.amenities.viewAll" /></Button>
             </Link>
           </div>
         </div>
@@ -103,11 +104,11 @@ export default async function HomePage() {
         <section className="py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-3">Khách hàng nói gì</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-3"><T k="home.reviews.title" /></h2>
               <div className="flex items-center justify-center gap-2 text-amber-500">
                 <Star className="h-6 w-6 fill-current" />
                 <span className="text-2xl font-bold text-gray-900">{avgRating}</span>
-                <span className="text-gray-500">/ 5 ({reviews.length} đánh giá)</span>
+                <span className="text-gray-500">/ 5 ({reviews.length} <T k="reviews.reviews" />)</span>
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -130,7 +131,7 @@ export default async function HomePage() {
             </div>
             <div className="text-center mt-8">
               <Link href="/danh-gia">
-                <Button variant="outline">Xem tất cả đánh giá</Button>
+                <Button variant="outline"><T k="home.reviews.viewAll" /></Button>
               </Link>
             </div>
           </div>
@@ -142,8 +143,8 @@ export default async function HomePage() {
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-3">Ưu đãi đặc biệt</h2>
-              <p className="text-gray-600">Đặt phòng trực tiếp để nhận giá tốt nhất</p>
+              <h2 className="text-3xl font-bold text-gray-900 mb-3"><T k="home.offers.title" /></h2>
+              <p className="text-gray-600"><T k="home.offers.desc" /></p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {promotions.map((promo) => (
@@ -156,7 +157,7 @@ export default async function HomePage() {
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{promo.title}</h3>
                   <p className="text-sm text-gray-600 mb-4">{promo.description}</p>
                   <Link href="/dat-phong">
-                    <Button size="sm">Đặt ngay</Button>
+                    <Button size="sm"><T k="home.offers.bookNow" /></Button>
                   </Link>
                 </Card>
               ))}
@@ -168,13 +169,13 @@ export default async function HomePage() {
       {/* CTA */}
       <section className="py-16 bg-amber-800 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Sẵn sàng cho kỳ nghỉ tuyệt vời?</h2>
+          <h2 className="text-3xl font-bold mb-4"><T k="home.cta.title" /></h2>
           <p className="text-lg mb-8 opacity-90">
-            Đặt phòng trực tiếp với chúng tôi để nhận giá tốt nhất và nhiều ưu đãi hấp dẫn.
+            <T k="home.cta.desc" />
           </p>
           <Link href="/dat-phong">
             <Button size="lg" className="bg-white text-amber-800 hover:bg-gray-100">
-              Đặt phòng ngay
+              <T k="hero.bookNow" />
             </Button>
           </Link>
         </div>

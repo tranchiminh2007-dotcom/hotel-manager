@@ -1,5 +1,5 @@
 export const HOTEL_CONFIG = {
-  name: 'Khách Sạn Ninh Bình',
+  name: 'Long Hải Hotel',
   tagline: 'Nghỉ dưỡng giữa lòng di sản',
   address: 'Ninh Bình, Việt Nam',
   phone: '0834 367 026',
