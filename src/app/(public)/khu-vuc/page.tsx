@@ -2,6 +2,7 @@ import { MapPin, Navigation } from 'lucide-react'
 import Card from '@/components/ui/Card'
 import PageHeader from '@/components/ui/PageHeader'
 import T from '@/components/ui/T'
+import TD from '@/components/ui/TD'
 import { prisma } from '@/lib/prisma'
 import { placeholderImage } from '@/lib/utils'
 
@@ -40,12 +41,12 @@ export default async function LocalAreaPage() {
                     />
                   </div>
                   <div className="p-5">
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">{attraction.name}</h3>
-                    <p className="text-sm text-gray-600 mb-4 line-clamp-3">{attraction.description}</p>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2"><TD>{attraction.name}</TD></h3>
+                    <p className="text-sm text-gray-600 mb-4 line-clamp-3"><TD>{attraction.description}</TD></p>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-1.5 text-sm text-amber-700">
                         <Navigation className="h-4 w-4" />
-                        <span>{attraction.distance}</span>
+                        <span><TD>{attraction.distance}</TD></span>
                       </div>
                       {attraction.mapUrl && (
                         <a

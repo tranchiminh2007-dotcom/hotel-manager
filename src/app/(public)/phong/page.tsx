@@ -4,6 +4,7 @@ import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import PageHeader from '@/components/ui/PageHeader'
 import T from '@/components/ui/T'
+import TD from '@/components/ui/TD'
 import { prisma } from '@/lib/prisma'
 import { formatVND } from '@/lib/format'
 import { placeholderImage } from '@/lib/utils'
@@ -38,17 +39,17 @@ export default async function RoomsPage() {
                     />
                   </div>
                   <div className="p-8">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-4">{rt.name}</h2>
-                    <p className="text-gray-600 mb-6">{rt.description}</p>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-4"><TD>{rt.name}</TD></h2>
+                    <p className="text-gray-600 mb-6"><TD>{rt.description}</TD></p>
 
                     <div className="flex flex-wrap gap-4 mb-6 text-sm text-gray-600">
                       <div className="flex items-center gap-1.5">
                         <BedDouble className="h-4 w-4 text-amber-700" />
-                        <span>{rt.bedType}</span>
+                        <span><TD>{rt.bedType}</TD></span>
                       </div>
                       <div className="flex items-center gap-1.5">
                         <Users className="h-4 w-4 text-amber-700" />
-                        <span>Tối đa {rt.maxGuests} khách</span>
+                        <span><T k="rooms.maxGuests" /> {rt.maxGuests} <T k="rooms.guests" /></span>
                       </div>
                       <div className="flex items-center gap-1.5">
                         <Maximize className="h-4 w-4 text-amber-700" />
@@ -57,11 +58,11 @@ export default async function RoomsPage() {
                     </div>
 
                     <div className="mb-6">
-                      <h3 className="font-semibold text-gray-900 mb-2">Tiện nghi phòng:</h3>
+                      <h3 className="font-semibold text-gray-900 mb-2"><T k="rooms.amenities" />:</h3>
                       <div className="flex flex-wrap gap-2">
                         {amenities.map((a) => (
                           <span key={a} className="bg-amber-50 text-amber-800 text-xs px-2.5 py-1 rounded-full">
-                            {a}
+                            <TD>{a}</TD>
                           </span>
                         ))}
                       </div>
@@ -70,14 +71,14 @@ export default async function RoomsPage() {
                     <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                       <div>
                         <span className="text-3xl font-bold text-amber-700">{formatVND(rt.basePrice)}</span>
-                        <span className="text-gray-500"> / đêm</span>
+                        <span className="text-gray-500"> <T k="rooms.perNight" /></span>
                       </div>
                       <div className="flex gap-3">
                         <Link href={`/phong/${rt.slug}`}>
-                          <Button variant="outline" size="sm">Chi tiết</Button>
+                          <Button variant="outline" size="sm"><T k="rooms.detail" /></Button>
                         </Link>
                         <Link href={`/dat-phong?type=${rt.slug}`}>
-                          <Button size="sm">Đặt phòng</Button>
+                          <Button size="sm"><T k="rooms.bookRoom" /></Button>
                         </Link>
                       </div>
                     </div>

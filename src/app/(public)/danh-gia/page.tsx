@@ -100,15 +100,15 @@ export default function ReviewsPage() {
               <h2 className="text-lg font-bold text-gray-900 mb-4">{t('reviews.writeReview')}</h2>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <Input
-                  label="Họ tên"
+                  label={t('reviews.yourName')}
                   value={formData.guestName}
                   onChange={(e) => setFormData({ ...formData, guestName: e.target.value })}
-                  placeholder="Nhập họ tên của bạn"
+                  placeholder=""
                   required
                 />
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Đánh giá</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">{t('reviews.rating')}</label>
                   <div className="flex gap-1">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <button
@@ -129,12 +129,12 @@ export default function ReviewsPage() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Nhận xét (tùy chọn)
+                    {t('reviews.comment')}
                   </label>
                   <textarea
                     value={formData.content}
                     onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                    placeholder="Chia sẻ trải nghiệm của bạn..."
+                    placeholder=""
                     rows={4}
                     className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
                   />

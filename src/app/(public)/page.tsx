@@ -4,6 +4,7 @@ import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import HeroSection from '@/components/home/HeroSection'
 import T from '@/components/ui/T'
+import TD from '@/components/ui/TD'
 import { prisma } from '@/lib/prisma'
 import { formatVND } from '@/lib/format'
 import { placeholderImage } from '@/lib/utils'
@@ -52,8 +53,8 @@ export default async function HomePage() {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{rt.name}</h3>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">{rt.description}</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2"><TD>{rt.name}</TD></h3>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-2"><TD>{rt.description}</TD></p>
                   <div className="flex items-center justify-between">
                     <div>
                       <span className="text-2xl font-bold text-amber-700">{formatVND(rt.basePrice)}</span>

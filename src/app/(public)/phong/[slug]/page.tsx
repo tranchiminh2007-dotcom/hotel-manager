@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { BedDouble, Users, Maximize, Check } from 'lucide-react'
 import Button from '@/components/ui/Button'
+import T from '@/components/ui/T'
+import TD from '@/components/ui/TD'
 import { prisma } from '@/lib/prisma'
 import { formatVND } from '@/lib/format'
 import { placeholderImage } from '@/lib/utils'
@@ -32,7 +34,7 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ slu
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <Link href="/phong" className="text-amber-700 hover:text-amber-800 text-sm font-medium">
-            ← Quay lại danh sách phòng
+            <T k="rooms.backToList" />
           </Link>
         </div>
 
@@ -57,15 +59,15 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ slu
           </div>
 
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">{roomType.name}</h1>
+            <h1 className="text-3xl font-bold text-gray-900 mb-4"><TD>{roomType.name}</TD></h1>
             <div className="flex flex-wrap gap-4 mb-6 text-sm text-gray-600">
               <div className="flex items-center gap-1.5">
                 <BedDouble className="h-5 w-5 text-amber-700" />
-                <span>{roomType.bedType}</span>
+                <span><TD>{roomType.bedType}</TD></span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Users className="h-5 w-5 text-amber-700" />
-                <span>Tối đa {roomType.maxGuests} khách</span>
+                <span><T k="rooms.maxGuests" /> {roomType.maxGuests} <T k="rooms.guests" /></span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Maximize className="h-5 w-5 text-amber-700" />
@@ -73,15 +75,15 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ slu
               </div>
             </div>
 
-            <p className="text-gray-600 leading-relaxed mb-8">{roomType.description}</p>
+            <p className="text-gray-600 leading-relaxed mb-8"><TD>{roomType.description}</TD></p>
 
             <div className="mb-8">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Tiện nghi phòng</h2>
+              <h2 className="text-lg font-semibold text-gray-900 mb-4"><T k="rooms.amenities" /></h2>
               <div className="grid grid-cols-2 gap-3">
                 {amenities.map((a) => (
                   <div key={a} className="flex items-center gap-2 text-sm text-gray-600">
                     <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
-                    <span>{a}</span>
+                    <span><TD>{a}</TD></span>
                   </div>
                 ))}
               </div>
@@ -91,14 +93,14 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ slu
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <span className="text-3xl font-bold text-amber-700">{formatVND(roomType.basePrice)}</span>
-                  <span className="text-gray-500"> / đêm</span>
+                  <span className="text-gray-500"> <T k="rooms.perNight" /></span>
                 </div>
               </div>
               <Link href={`/dat-phong?type=${roomType.slug}`}>
-                <Button size="lg" className="w-full">Đặt phòng ngay</Button>
+                <Button size="lg" className="w-full"><T k="rooms.bookNow" /></Button>
               </Link>
               <p className="text-xs text-gray-500 mt-2 text-center">
-                Đặt trực tiếp để nhận giá tốt nhất
+                <T k="rooms.bookDirect" />
               </p>
             </div>
           </div>

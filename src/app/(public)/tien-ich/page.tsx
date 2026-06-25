@@ -2,6 +2,7 @@ import { prisma } from '@/lib/prisma'
 import Card from '@/components/ui/Card'
 import PageHeader from '@/components/ui/PageHeader'
 import T from '@/components/ui/T'
+import TD from '@/components/ui/TD'
 import {
   Wifi, Car, UtensilsCrossed, Coffee, Clock, Shirt, Bike, TreePine,
 } from 'lucide-react'
@@ -40,8 +41,8 @@ export default async function AmenitiesPage() {
                 return (
                   <Card key={amenity.id} className="p-6" hover>
                     <Icon className="h-8 w-8 text-amber-700 mb-4" />
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{amenity.name}</h3>
-                    <p className="text-sm text-gray-600">{amenity.description}</p>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2"><TD>{amenity.name}</TD></h3>
+                    <p className="text-sm text-gray-600"><TD>{amenity.description}</TD></p>
                   </Card>
                 )
               })}
