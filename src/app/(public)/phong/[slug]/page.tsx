@@ -30,76 +30,92 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ slu
   const amenities: string[] = JSON.parse(roomType.amenities)
 
   return (
-    <div className="py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <Link href="/phong" className="text-amber-700 hover:text-amber-800 text-sm font-medium">
-            <T k="rooms.backToList" />
-          </Link>
-        </div>
+    <div className="px-4 py-10 sm:px-6 lg:px-10 lg:py-14">
+      <div className="mx-auto max-w-[1400px]">
+        <Link
+          href="/phong"
+          className="text-[10px] uppercase tracking-[0.2em] text-ink-soft transition-colors hover:text-brand"
+        >
+          <T k="rooms.backToList" />
+        </Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:gap-14">
+          {/* Thư viện ảnh */}
           <div className="space-y-4">
-            <div className="aspect-[4/3] rounded-xl overflow-hidden bg-gray-200">
+            <div className="aspect-[4/3] overflow-hidden bg-sand">
               <img
-                src={roomType.images[0]?.url || placeholderImage(800, 600, roomType.name)}
+                src={roomType.images[0]?.url || placeholderImage()}
                 alt={roomType.name}
-                className="w-full h-full object-cover"
+                className="h-full w-full object-cover"
               />
             </div>
             {roomType.images.length > 1 && (
               <div className="grid grid-cols-3 gap-4">
                 {roomType.images.slice(1).map((img) => (
-                  <div key={img.id} className="aspect-[4/3] rounded-lg overflow-hidden bg-gray-200">
-                    <img src={img.url} alt={img.alt} className="w-full h-full object-cover" />
+                  <div key={img.id} className="aspect-[4/3] overflow-hidden bg-sand">
+                    <img src={img.url} alt={img.alt} className="h-full w-full object-cover" />
                   </div>
                 ))}
               </div>
             )}
           </div>
 
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-4"><TD>{roomType.name}</TD></h1>
-            <div className="flex flex-wrap gap-4 mb-6 text-sm text-gray-600">
-              <div className="flex items-center gap-1.5">
-                <BedDouble className="h-5 w-5 text-amber-700" />
-                <span><TD>{roomType.bedType}</TD></span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Users className="h-5 w-5 text-amber-700" />
-                <span><T k="rooms.maxGuests" /> {roomType.maxGuests} <T k="rooms.guests" /></span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Maximize className="h-5 w-5 text-amber-700" />
-                <span>{roomType.size} m²</span>
-              </div>
+          {/* Thông tin */}
+          <div className="lg:pt-4">
+            <h1 className="text-2xl font-extralight uppercase leading-tight tracking-[0.2em] text-ink lg:text-4xl">
+              <TD>{roomType.name}</TD>
+            </h1>
+            <span className="mt-5 block h-px w-14 bg-brand" />
+
+            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-[10px] uppercase tracking-[0.16em] text-ink-soft">
+              <span className="flex items-center gap-2">
+                <BedDouble className="h-4 w-4 text-brand" strokeWidth={1.3} />
+                <TD>{roomType.bedType}</TD>
+              </span>
+              <span className="flex items-center gap-2">
+                <Users className="h-4 w-4 text-brand" strokeWidth={1.3} />
+                <T k="rooms.maxGuests" /> {roomType.maxGuests} <T k="rooms.guests" />
+              </span>
+              <span className="flex items-center gap-2">
+                <Maximize className="h-4 w-4 text-brand" strokeWidth={1.3} />
+                {roomType.size} m²
+              </span>
             </div>
 
-            <p className="text-gray-600 leading-relaxed mb-8"><TD>{roomType.description}</TD></p>
+            <p className="mt-8 text-sm font-light leading-[1.9] text-ink-soft">
+              <TD>{roomType.description}</TD>
+            </p>
 
-            <div className="mb-8">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4"><T k="rooms.amenities" /></h2>
-              <div className="grid grid-cols-2 gap-3">
+            <div className="mt-10 border-t border-line pt-8">
+              <h2 className="text-[10px] uppercase tracking-[0.22em] text-ink">
+                <T k="rooms.amenities" />
+              </h2>
+              <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {amenities.map((a) => (
-                  <div key={a} className="flex items-center gap-2 text-sm text-gray-600">
-                    <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
-                    <span><TD>{a}</TD></span>
+                  <div
+                    key={a}
+                    className="flex items-center gap-2.5 text-xs font-light text-ink-soft"
+                  >
+                    <Check className="h-3 w-3 flex-shrink-0 text-brand" strokeWidth={2} />
+                    <TD>{a}</TD>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="bg-amber-50 rounded-xl p-6 border border-amber-100">
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <span className="text-3xl font-bold text-amber-700">{formatVND(roomType.basePrice)}</span>
-                  <span className="text-gray-500"> <T k="rooms.perNight" /></span>
-                </div>
-              </div>
-              <Link href={`/dat-phong?type=${roomType.slug}`}>
-                <Button size="lg" className="w-full"><T k="rooms.bookNow" /></Button>
+            <div className="mt-10 bg-sand p-8 text-center">
+              <span className="text-3xl font-extralight text-ink lg:text-4xl">
+                {formatVND(roomType.basePrice)}
+              </span>
+              <span className="ml-2 text-[10px] uppercase tracking-[0.2em] text-ink-soft">
+                <T k="rooms.perNight" />
+              </span>
+              <Link href={`/dat-phong?type=${roomType.slug}`} className="mt-7 block">
+                <Button size="lg" className="w-full">
+                  <T k="rooms.bookNow" />
+                </Button>
               </Link>
-              <p className="text-xs text-gray-500 mt-2 text-center">
+              <p className="mt-4 text-[9px] uppercase tracking-[0.2em] text-ink-soft">
                 <T k="rooms.bookDirect" />
               </p>
             </div>

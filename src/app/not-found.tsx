@@ -1,17 +1,22 @@
 import Link from 'next/link'
-import Button from '@/components/ui/Button'
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="text-center px-4">
-        <h1 className="text-6xl font-bold text-amber-700 mb-4">404</h1>
-        <h2 className="text-2xl font-semibold text-gray-900 mb-2">Trang không tồn tại</h2>
-        <p className="text-gray-600 mb-8">
-          Xin lỗi, trang bạn đang tìm kiếm không tồn tại hoặc đã được di chuyển.
+    <div className="flex min-h-screen items-center justify-center bg-white px-6">
+      <div className="text-center">
+        <p className="text-5xl font-extralight tracking-[0.2em] text-brand lg:text-6xl">404</p>
+        <h1 className="mt-8 text-xl font-light uppercase tracking-[0.22em] text-ink lg:text-2xl">
+          Trang không tồn tại
+        </h1>
+        <span className="mx-auto mt-5 block h-px w-14 bg-brand" />
+        <p className="mt-6 text-sm font-light text-ink-soft">
+          Page not found — xin lỗi, trang bạn tìm không tồn tại.
         </p>
-        <Link href="/">
-          <Button size="lg">Về trang chủ</Button>
+        <Link
+          href="/"
+          className="mt-10 inline-block border border-ink/25 px-10 py-4 text-xs uppercase tracking-[0.22em] text-ink transition-all hover:bg-ink hover:text-white"
+        >
+          Trang chủ / Home
         </Link>
       </div>
     </div>

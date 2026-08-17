@@ -6,56 +6,79 @@ import TD from '@/components/ui/TD'
 
 export const metadata = {
   title: 'Về chúng tôi',
-  description: 'Câu chuyện Khách Sạn Ninh Bình - nơi nghỉ dưỡng giữa lòng di sản thiên nhiên.',
+  description: 'Câu chuyện Long Hải Hotel — nơi nghỉ dưỡng giữa lòng di sản thiên nhiên.',
 }
 
 export default async function AboutPage() {
   const settings = await prisma.hotelSettings.findUnique({ where: { id: 'main' } })
 
   return (
-    <div className="py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <PageHeader titleKey="about.title" />
+    <div className="px-4 py-14 sm:px-6 lg:px-10 lg:py-20">
+      <div className="mx-auto max-w-[1400px]">
+        <PageHeader titleKey="about.title" subtitleKey="about.subtitle" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          <div className="aspect-[4/3] rounded-xl overflow-hidden bg-gray-200">
+        {/* Câu chuyện */}
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div className="aspect-[4/3] overflow-hidden bg-sand">
             <img
-              src={placeholderImage(800, 600, 'Khách Sạn')}
-              alt="Khách Sạn Ninh Bình"
-              className="w-full h-full object-cover"
+              src={placeholderImage()}
+              alt="Long Hải Hotel"
+              className="h-full w-full object-cover"
             />
           </div>
-          <div className="flex flex-col justify-center">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4"><T k="about.story" /></h2>
-            <p className="text-gray-600 leading-relaxed whitespace-pre-line">
+          <div>
+            <h2 className="text-xl font-light uppercase tracking-[0.2em] text-ink lg:text-2xl">
+              <T k="about.story" />
+            </h2>
+            <span className="mt-5 block h-px w-14 bg-brand" />
+            <p className="mt-7 whitespace-pre-line text-sm font-light leading-[1.95] text-ink-soft">
               <TD>{settings?.story || ''}</TD>
             </p>
           </div>
         </div>
 
-        <div className="bg-amber-50 rounded-2xl p-8 lg:p-12 mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center"><T k="about.values" /></h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Giá trị cốt lõi */}
+        <div className="mt-20 bg-sand px-8 py-14 lg:mt-28 lg:px-14 lg:py-20">
+          <h2 className="text-center text-xl font-light uppercase tracking-[0.22em] text-ink lg:text-2xl">
+            <T k="about.values" />
+          </h2>
+          <span className="mx-auto mt-5 block h-px w-14 bg-brand" />
+
+          <div className="mt-14 grid gap-12 md:grid-cols-3">
             {[
-              { titleKey: 'about.val1.title', descKey: 'about.val1.desc' },
-              { titleKey: 'about.val2.title', descKey: 'about.val2.desc' },
-              { titleKey: 'about.val3.title', descKey: 'about.val3.desc' },
+              { n: '01', titleKey: 'about.val1.title', descKey: 'about.val1.desc' },
+              { n: '02', titleKey: 'about.val2.title', descKey: 'about.val2.desc' },
+              { n: '03', titleKey: 'about.val3.title', descKey: 'about.val3.desc' },
             ].map((v) => (
               <div key={v.titleKey} className="text-center">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2"><T k={v.titleKey} /></h3>
-                <p className="text-sm text-gray-600"><T k={v.descKey} /></p>
+                <span className="block text-2xl font-extralight text-brand">{v.n}</span>
+                <h3 className="mt-5 text-[11px] uppercase tracking-[0.2em] text-ink">
+                  <T k={v.titleKey} />
+                </h3>
+                <p className="mt-4 text-xs font-light leading-relaxed text-ink-soft">
+                  <T k={v.descKey} />
+                </p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center"><T k="about.sustainability" /></h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {['about.sus1', 'about.sus2', 'about.sus3', 'about.sus4'].map((key) => (
-              <div key={key} className="flex items-start gap-3 p-4 bg-green-50 rounded-lg">
-                <span className="text-green-600 font-bold mt-0.5">✓</span>
-                <p className="text-sm text-gray-700"><T k={key} /></p>
+        {/* Cam kết bền vững */}
+        <div className="mt-20 lg:mt-28">
+          <h2 className="text-center text-xl font-light uppercase tracking-[0.22em] text-ink lg:text-2xl">
+            <T k="about.sustainability" />
+          </h2>
+          <span className="mx-auto mt-5 block h-px w-14 bg-brand" />
+
+          <div className="mx-auto mt-12 grid max-w-4xl gap-px bg-line sm:grid-cols-2">
+            {['about.sus1', 'about.sus2', 'about.sus3', 'about.sus4'].map((key, i) => (
+              <div key={key} className="flex gap-4 bg-white p-8">
+                <span className="text-[10px] font-normal tracking-[0.1em] text-brand">
+                  0{i + 1}
+                </span>
+                <p className="text-xs font-light leading-relaxed text-ink-soft">
+                  <T k={key} />
+                </p>
               </div>
             ))}
           </div>

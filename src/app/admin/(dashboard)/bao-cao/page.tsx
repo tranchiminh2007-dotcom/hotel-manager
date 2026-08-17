@@ -62,7 +62,7 @@ export default async function AdminReportsPage() {
         <Card>
           <CardContent>
             <p className="text-sm text-gray-500">Tổng doanh thu</p>
-            <p className="text-2xl font-bold text-amber-700">{formatVND(totalRevenue._sum.totalPrice || 0)}</p>
+            <p className="text-2xl font-bold text-brand-deep">{formatVND(totalRevenue._sum.totalPrice || 0)}</p>
           </CardContent>
         </Card>
         <Card>

@@ -9,8 +9,8 @@ export default function Card({ className, hover = false, children, ...props }: C
   return (
     <div
       className={cn(
-        'rounded-xl bg-white shadow-sm border border-gray-100',
-        hover && 'transition-shadow hover:shadow-md',
+        'bg-white border border-line',
+        hover && 'transition-shadow duration-500 hover:shadow-[0_10px_40px_rgba(0,0,0,0.07)]',
         className
       )}
       {...props}
@@ -22,7 +22,7 @@ export default function Card({ className, hover = false, children, ...props }: C
 
 export function CardHeader({ className, children, ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn('px-6 py-4 border-b border-gray-100', className)} {...props}>
+    <div className={cn('px-6 py-4 border-b border-line', className)} {...props}>
       {children}
     </div>
   )
@@ -30,7 +30,7 @@ export function CardHeader({ className, children, ...props }: HTMLAttributes<HTM
 
 export function CardContent({ className, children, ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn('px-6 py-4', className)} {...props}>
+    <div className={cn('px-6 py-5', className)} {...props}>
       {children}
     </div>
   )

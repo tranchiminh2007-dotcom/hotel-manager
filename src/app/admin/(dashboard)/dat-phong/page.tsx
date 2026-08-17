@@ -61,7 +61,7 @@ export default async function AdminBookingsPage() {
                     <td className="px-4 py-3">
                       <Link
                         href={`/admin/dat-phong/${b.id}`}
-                        className="text-amber-700 hover:text-amber-800 text-sm font-medium"
+                        className="text-brand-deep hover:text-brand-deep text-sm font-medium"
                       >
                         Chi tiết
                       </Link>

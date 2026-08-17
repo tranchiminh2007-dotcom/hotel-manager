@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
-import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { HOTEL_CONFIG } from '@/lib/constants'
@@ -10,11 +9,18 @@ import { useLanguage } from '@/lib/language-context'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
-    name: '', email: '', phone: '', subject: '', message: '',
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
   })
   const [submitting, setSubmitting] = useState(false)
   const [result, setResult] = useState('')
+  const [ok, setOk] = useState(false)
   const { t } = useLanguage()
+
+  const tel = HOTEL_CONFIG.phone.replace(/\s/g, '')
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -28,52 +34,77 @@ export default function ContactPage() {
     })
 
     if (res.ok) {
-      setResult('Tin nhắn đã được gửi thành công! Chúng tôi sẽ phản hồi sớm nhất.')
+      setOk(true)
+      setResult(t('contact.success'))
       setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
     } else {
       const data = await res.json()
-      setResult(data.error || 'Có lỗi xảy ra, vui lòng thử lại.')
+      setOk(false)
+      setResult(data.error || t('reviews.error'))
     }
     setSubmitting(false)
   }
 
   return (
-    <div className="py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-3">{t('contact.title')}</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+    <div className="px-4 py-14 sm:px-6 lg:px-10 lg:py-20">
+      <div className="mx-auto max-w-[1400px]">
+        <div className="mb-14 text-center">
+          <h1 className="text-3xl font-extralight uppercase leading-tight tracking-[0.22em] text-ink lg:text-[2.75rem]">
+            {t('contact.title')}
+          </h1>
+          <p className="mt-4 text-[10px] uppercase tracking-[0.3em] text-brand">
+            — {t('contact.subtitle')} —
+          </p>
+          <p className="mx-auto mt-6 max-w-2xl text-sm font-light leading-relaxed text-ink-soft">
             {t('contact.desc')}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-          <Card className="p-6 text-center">
-            <MapPin className="h-8 w-8 text-amber-700 mx-auto mb-3" />
-            <h3 className="font-semibold text-gray-900 mb-1">{t('contact.address')}</h3>
-            <p className="text-sm text-gray-600">{HOTEL_CONFIG.address}</p>
-          </Card>
-          <a href={`tel:${HOTEL_CONFIG.phone.replace(/\s/g, '')}`}>
-            <Card className="p-6 text-center hover:shadow-md transition-shadow cursor-pointer">
-              <Phone className="h-8 w-8 text-amber-700 mx-auto mb-3" />
-              <h3 className="font-semibold text-gray-900 mb-1">{t('contact.phone')}</h3>
-              <p className="text-sm text-amber-700 font-medium underline">{HOTEL_CONFIG.phone}</p>
-            </Card>
+        {/* Thẻ liên hệ */}
+        <div className="mb-14 grid gap-px bg-line lg:grid-cols-3">
+          <div className="bg-white p-9 text-center">
+            <MapPin className="mx-auto mb-5 h-6 w-6 text-brand" strokeWidth={1} />
+            <h3 className="text-[10px] uppercase tracking-[0.22em] text-ink">
+              {t('contact.address')}
+            </h3>
+            <p className="mt-3 text-xs font-light text-ink-soft">{HOTEL_CONFIG.address}</p>
+          </div>
+          <a
+            href={`tel:${tel}`}
+            className="group bg-white p-9 text-center transition-colors hover:bg-sand"
+          >
+            <Phone className="mx-auto mb-5 h-6 w-6 text-brand" strokeWidth={1} />
+            <h3 className="text-[10px] uppercase tracking-[0.22em] text-ink">
+              {t('contact.phone')}
+            </h3>
+            <p className="mt-3 text-xs font-light text-brand-deep group-hover:underline">
+              {HOTEL_CONFIG.phone}
+            </p>
           </a>
-          <a href={`mailto:${HOTEL_CONFIG.email}`}>
-            <Card className="p-6 text-center hover:shadow-md transition-shadow cursor-pointer">
-              <Mail className="h-8 w-8 text-amber-700 mx-auto mb-3" />
-              <h3 className="font-semibold text-gray-900 mb-1">{t('contact.email')}</h3>
-              <p className="text-sm text-amber-700 font-medium underline">{HOTEL_CONFIG.email}</p>
-            </Card>
+          <a
+            href={`mailto:${HOTEL_CONFIG.email}`}
+            className="group bg-white p-9 text-center transition-colors hover:bg-sand"
+          >
+            <Mail className="mx-auto mb-5 h-6 w-6 text-brand" strokeWidth={1} />
+            <h3 className="text-[10px] uppercase tracking-[0.22em] text-ink">
+              {t('contact.email')}
+            </h3>
+            <p className="mt-3 text-xs font-light text-brand-deep group-hover:underline">
+              {HOTEL_CONFIG.email}
+            </p>
           </a>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <Card className="p-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-6">{t('contact.sendMessage')}</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-12">
+          {/* Form */}
+          <div className="border border-line p-8 lg:p-10">
+            <h2 className="text-[11px] uppercase tracking-[0.22em] text-ink">
+              {t('contact.sendMessage')}
+            </h2>
+            <span className="mt-4 mb-8 block h-px w-10 bg-brand" />
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid gap-5 sm:grid-cols-2">
                 <Input
                   label={t('contact.name')}
                   value={formData.name}
@@ -90,7 +121,7 @@ export default function ContactPage() {
                   required
                 />
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid gap-5 sm:grid-cols-2">
                 <Input
                   label={t('contact.phone')}
                   type="tel"
@@ -108,19 +139,23 @@ export default function ContactPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">{t('contact.message')}</label>
+                <label className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-ink-soft">
+                  {t('contact.message')}
+                </label>
                 <textarea
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder={t('contact.messagePlaceholder')}
                   rows={5}
                   required
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                  className="w-full border border-line bg-white px-4 py-3 text-sm font-light text-ink transition-colors placeholder:text-ink-soft/60 focus:border-brand focus:outline-none"
                 />
               </div>
 
               {result && (
-                <p className={`text-sm ${result.includes('lỗi') ? 'text-red-600' : 'text-green-600'}`}>
+                <p
+                  className={`text-xs font-light ${ok ? 'text-brand-deep' : 'text-red-600'}`}
+                >
                   {result}
                 </p>
               )}
@@ -129,29 +164,43 @@ export default function ContactPage() {
                 {submitting ? t('contact.sending') : t('contact.send')}
               </Button>
             </form>
-          </Card>
+          </div>
 
-          <div>
-            <Card className="p-6 mb-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">{t('contact.hours')}</h2>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <Clock className="h-5 w-5 text-amber-700" />
+          {/* Giờ làm việc + bản đồ */}
+          <div className="space-y-6">
+            <div className="bg-sand p-8">
+              <h2 className="text-[11px] uppercase tracking-[0.22em] text-ink">
+                {t('contact.hours')}
+              </h2>
+              <span className="mt-4 mb-7 block h-px w-10 bg-brand" />
+
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <Clock className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand" strokeWidth={1.2} />
                   <div>
-                    <p className="font-medium text-gray-900">{t('contact.reception')}</p>
-                    <p className="text-sm text-gray-600">{t('contact.receptionDesc')}</p>
+                    <p className="text-[11px] uppercase tracking-[0.16em] text-ink">
+                      {t('contact.reception')}
+                    </p>
+                    <p className="mt-1.5 text-xs font-light text-ink-soft">
+                      {t('contact.receptionDesc')}
+                    </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <Clock className="h-5 w-5 text-amber-700" />
+                <div className="flex items-start gap-4">
+                  <Clock className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand" strokeWidth={1.2} />
                   <div>
-                    <p className="font-medium text-gray-900">{t('contact.restaurant')}</p>
-                    <p className="text-sm text-gray-600">{t('contact.breakfast')}</p>
+                    <p className="text-[11px] uppercase tracking-[0.16em] text-ink">
+                      {t('contact.restaurant')}
+                    </p>
+                    <p className="mt-1.5 text-xs font-light text-ink-soft">
+                      {t('contact.breakfast')}
+                    </p>
                   </div>
                 </div>
               </div>
-            </Card>
-            <div className="aspect-[4/3] rounded-xl overflow-hidden bg-gray-200">
+            </div>
+
+            <div className="aspect-[4/3] overflow-hidden border border-line bg-sand">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d478434.8515894383!2d105.60869!3d20.25!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3136751d83b0d05b%3A0x6b5e2e6e7b0b0b0b!2sNinh%20B%C3%ACnh!5e0!3m2!1svi!2svn!4v1700000000000!5m2!1svi!2svn"
                 width="100%"
@@ -160,7 +209,7 @@ export default function ContactPage() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Vị trí khách sạn"
+                title="Long Hải Hotel"
               />
             </div>
           </div>

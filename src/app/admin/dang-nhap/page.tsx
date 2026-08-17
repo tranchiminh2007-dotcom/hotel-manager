@@ -39,7 +39,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <Card className="w-full max-w-md p-8">
         <div className="text-center mb-8">
-          <Hotel className="h-12 w-12 text-amber-700 mx-auto mb-3" />
+          <Hotel className="h-12 w-12 text-brand-deep mx-auto mb-3" />
           <h1 className="text-2xl font-bold text-gray-900">Đăng nhập quản trị</h1>
           <p className="text-sm text-gray-500 mt-1">Hệ thống quản lý khách sạn</p>
         </div>

@@ -68,7 +68,7 @@ export default async function BookingDetailPage({ params }: { params: Promise<{ 
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <Link href="/admin/dat-phong" className="text-sm text-amber-700 hover:text-amber-800">
+          <Link href="/admin/dat-phong" className="text-sm text-brand-deep hover:text-brand-deep">
             ← Quay lại danh sách
           </Link>
           <h1 className="text-2xl font-bold text-gray-900 mt-2">Đặt phòng {booking.code}</h1>
@@ -115,7 +115,7 @@ export default async function BookingDetailPage({ params }: { params: Promise<{ 
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
                   <span className="text-gray-500">Tổng tiền</span>
-                  <span className="font-bold text-xl text-amber-700">{formatVND(booking.totalPrice)}</span>
+                  <span className="font-bold text-xl text-brand-deep">{formatVND(booking.totalPrice)}</span>
                 </div>
                 {booking.discountCode && (
                   <div className="flex justify-between text-green-600">

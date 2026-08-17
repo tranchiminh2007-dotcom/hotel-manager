@@ -43,7 +43,7 @@ export default async function AdminReviewsPage() {
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Star
                         key={i}
-                        className={`h-4 w-4 ${i < review.rating ? 'text-amber-400 fill-current' : 'text-gray-300'}`}
+                        className={`h-4 w-4 ${i < review.rating ? 'text-brand fill-current' : 'text-gray-300'}`}
                       />
                     ))}
                   </div>

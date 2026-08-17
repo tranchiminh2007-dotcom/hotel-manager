@@ -2,11 +2,39 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #2c2c2c;
   color-scheme: light;
+}
+
+@theme {
+  --color-brand: #7fb2b6;
+  --color-brand-dark: #5f979c;
+  --color-brand-deep: #3f6c72;
+  --color-night: #2b3b40;
+  --color-ink: #2c2c2c;
+  --color-ink-soft: #7b7b7b;
+  --color-line: #e6e6e6;
+  --color-sand: #f8f8f6;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+/* Bỏ mũi tên xoay của input number */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
 }

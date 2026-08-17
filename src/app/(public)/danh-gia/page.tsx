@@ -2,25 +2,30 @@
 
 import { useState, useEffect } from 'react'
 import { Star } from 'lucide-react'
-import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { useLanguage } from '@/lib/language-context'
 
+interface Review {
+  id: string
+  guestName: string
+  rating: number
+  content: string | null
+  createdAt: string
+}
+
 export default function ReviewsPage() {
-  const [reviews, setReviews] = useState<{ id: string; guestName: string; rating: number; content: string | null; createdAt: string }[]>([])
+  const [reviews, setReviews] = useState<Review[]>([])
   const [loaded, setLoaded] = useState(false)
   const [formData, setFormData] = useState({ guestName: '', rating: 0, content: '' })
+  const [hover, setHover] = useState(0)
   const [submitting, setSubmitting] = useState(false)
   const [message, setMessage] = useState('')
   const { t } = useLanguage()
 
   async function loadReviews() {
     const res = await fetch('/api/reviews')
-    if (res.ok) {
-      const data = await res.json()
-      setReviews(data)
-    }
+    if (res.ok) setReviews(await res.json())
     setLoaded(true)
   }
 
@@ -46,81 +51,128 @@ export default function ReviewsPage() {
     })
 
     if (res.ok) {
-      setMessage('Cảm ơn bạn đã đánh giá!')
+      setMessage(t('reviews.thanks'))
       setFormData({ guestName: '', rating: 0, content: '' })
       loadReviews()
     } else {
-      setMessage('Có lỗi xảy ra, vui lòng thử lại.')
+      setMessage(t('reviews.error'))
     }
     setSubmitting(false)
   }
 
   return (
-    <div className="py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-3">{t('reviews.title')}</h1>
+    <div className="px-4 py-14 sm:px-6 lg:px-10 lg:py-20">
+      <div className="mx-auto max-w-[1400px]">
+        <div className="mb-14 text-center">
+          <h1 className="text-3xl font-extralight uppercase leading-tight tracking-[0.22em] text-ink lg:text-[2.75rem]">
+            {t('reviews.title')}
+          </h1>
+          <p className="mt-4 text-[10px] uppercase tracking-[0.3em] text-brand">
+            — {t('reviews.subtitle')} —
+          </p>
           {reviews.length > 0 && (
-            <div className="flex items-center justify-center gap-2 mt-4">
-              <Star className="h-8 w-8 text-amber-400 fill-current" />
-              <span className="text-4xl font-bold text-gray-900">{avgRating}</span>
-              <span className="text-gray-500 text-lg">/ 5 ({reviews.length} {t('reviews.reviews')})</span>
+            <div className="mt-8 flex items-center justify-center gap-3">
+              <span className="flex gap-1">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    className={
+                      i < Math.round(Number(avgRating))
+                        ? 'h-3.5 w-3.5 fill-brand text-brand'
+                        : 'h-3.5 w-3.5 fill-line text-line'
+                    }
+                    strokeWidth={0}
+                  />
+                ))}
+              </span>
+              <span className="text-2xl font-extralight text-ink">{avgRating}</span>
+              <span className="text-[10px] uppercase tracking-[0.18em] text-ink-soft">
+                / 5 · {reviews.length} {t('reviews.reviews')}
+              </span>
             </div>
           )}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 space-y-4">
-            {reviews.map((review) => (
-              <Card key={review.id} className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`h-5 w-5 ${i < review.rating ? 'text-amber-400 fill-current' : 'text-gray-300'}`}
-                      />
-                    ))}
+        <div className="grid gap-10 lg:grid-cols-3 lg:gap-12">
+          {/* Danh sách đánh giá */}
+          <div className="lg:col-span-2">
+            <div className="grid gap-px bg-line sm:grid-cols-2">
+              {reviews.map((review) => (
+                <div key={review.id} className="bg-white p-8">
+                  <div className="flex items-center justify-between">
+                    <span className="flex gap-1">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star
+                          key={i}
+                          className={
+                            i < review.rating
+                              ? 'h-3 w-3 fill-brand text-brand'
+                              : 'h-3 w-3 fill-line text-line'
+                          }
+                          strokeWidth={0}
+                        />
+                      ))}
+                    </span>
+                    <span className="text-[9px] uppercase tracking-[0.16em] text-ink-soft">
+                      {new Date(review.createdAt).toLocaleDateString('vi-VN')}
+                    </span>
                   </div>
-                  <span className="text-sm text-gray-500">
-                    {new Date(review.createdAt).toLocaleDateString('vi-VN')}
-                  </span>
+
+                  {review.content && (
+                    <p className="mt-5 font-display text-base font-light italic leading-relaxed text-ink-soft">
+                      “{review.content}”
+                    </p>
+                  )}
+                  <p className="mt-6 text-[10px] uppercase tracking-[0.2em] text-ink">
+                    {review.guestName}
+                  </p>
                 </div>
-                {review.content && <p className="text-gray-600 mb-3">{review.content}</p>}
-                <p className="font-semibold text-gray-900 text-sm">{review.guestName}</p>
-              </Card>
-            ))}
+              ))}
+            </div>
+
             {reviews.length === 0 && loaded && (
-              <p className="text-center text-gray-500 py-8">Chưa có đánh giá nào.</p>
+              <p className="py-16 text-center text-xs font-light text-ink-soft">
+                {t('reviews.noReviews')}
+              </p>
             )}
           </div>
 
+          {/* Form viết đánh giá */}
           <div>
-            <Card className="p-6 sticky top-24">
-              <h2 className="text-lg font-bold text-gray-900 mb-4">{t('reviews.writeReview')}</h2>
-              <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="sticky top-32 bg-sand p-8">
+              <h2 className="text-[11px] uppercase tracking-[0.22em] text-ink">
+                {t('reviews.writeReview')}
+              </h2>
+              <span className="mt-4 mb-7 block h-px w-10 bg-brand" />
+
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <Input
                   label={t('reviews.yourName')}
                   value={formData.guestName}
                   onChange={(e) => setFormData({ ...formData, guestName: e.target.value })}
-                  placeholder=""
                   required
                 />
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">{t('reviews.rating')}</label>
-                  <div className="flex gap-1">
+                  <label className="mb-2.5 block text-[10px] uppercase tracking-[0.2em] text-ink-soft">
+                    {t('reviews.rating')}
+                  </label>
+                  <div className="flex gap-1.5">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <button
                         key={i}
                         type="button"
                         onClick={() => setFormData({ ...formData, rating: i + 1 })}
-                        className="p-0.5"
+                        onMouseEnter={() => setHover(i + 1)}
+                        onMouseLeave={() => setHover(0)}
                       >
                         <Star
-                          className={`h-8 w-8 transition-colors ${
-                            i < formData.rating ? 'text-amber-400 fill-current' : 'text-gray-300 hover:text-amber-300'
-                          }`}
+                          className={
+                            i < (hover || formData.rating)
+                              ? 'h-6 w-6 fill-brand text-brand transition-colors'
+                              : 'h-6 w-6 fill-transparent text-ink-soft/40 transition-colors'
+                          }
+                          strokeWidth={1}
                         />
                       </button>
                     ))}
@@ -128,29 +180,30 @@ export default function ReviewsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-ink-soft">
                     {t('reviews.comment')}
                   </label>
                   <textarea
                     value={formData.content}
                     onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                    placeholder=""
                     rows={4}
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                    className="w-full border border-line bg-white px-4 py-3 text-sm font-light text-ink transition-colors focus:border-brand focus:outline-none"
                   />
                 </div>
 
                 {message && (
-                  <p className={`text-sm ${message.includes('lỗi') ? 'text-red-600' : 'text-green-600'}`}>
-                    {message}
-                  </p>
+                  <p className="text-xs font-light text-brand-deep">{message}</p>
                 )}
 
-                <Button type="submit" className="w-full" disabled={submitting || formData.rating === 0}>
+                <Button
+                  type="submit"
+                  className="w-full"
+                  disabled={submitting || formData.rating === 0}
+                >
                   {submitting ? t('reviews.submitting') : t('reviews.submit')}
                 </Button>
               </form>
-            </Card>
+            </div>
           </div>
         </div>
       </div>

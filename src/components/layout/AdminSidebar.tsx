@@ -34,7 +34,7 @@ export default function AdminSidebar({ userName, userRole }: { userName: string;
   return (
     <aside className="fixed left-0 top-0 z-40 h-screen w-64 bg-gray-900 text-white flex flex-col">
       <div className="flex items-center gap-2 px-6 py-5 border-b border-gray-800">
-        <Hotel className="h-6 w-6 text-amber-400" />
+        <Hotel className="h-6 w-6 text-brand" />
         <span className="text-lg font-bold">Quản trị</span>
       </div>
 
@@ -50,7 +50,7 @@ export default function AdminSidebar({ userName, userRole }: { userName: string;
               className={cn(
                 'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
                 isActive
-                  ? 'bg-amber-700 text-white'
+                  ? 'bg-brand-deep text-white'
                   : 'text-gray-300 hover:bg-gray-800 hover:text-white'
               )}
             >
@@ -63,7 +63,7 @@ export default function AdminSidebar({ userName, userRole }: { userName: string;
 
       <div className="border-t border-gray-800 p-4">
         <div className="flex items-center gap-3 mb-3">
-          <div className="h-8 w-8 rounded-full bg-amber-700 flex items-center justify-center text-sm font-bold">
+          <div className="h-8 w-8 rounded-full bg-brand-deep flex items-center justify-center text-sm font-bold">
             {userName.charAt(0).toUpperCase()}
           </div>
           <div>

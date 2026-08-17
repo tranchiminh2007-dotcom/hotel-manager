@@ -118,6 +118,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'reviews.submitting': 'Đang gửi...',
     'reviews.noReviews': 'Chưa có đánh giá nào.',
     'reviews.reviews': 'đánh giá',
+    'reviews.thanks': 'Cảm ơn bạn đã đánh giá!',
+    'reviews.error': 'Có lỗi xảy ra, vui lòng thử lại.',
 
     // Rooms page
     'rooms.title': 'Phòng & Giá',
@@ -213,9 +215,51 @@ export const translations: Record<Locale, Record<string, string>> = {
     'lang.vi': 'Tiếng Việt',
     'lang.en': 'English',
 
+    // Topbar / chrome
+    'ui.languages': 'Ngôn ngữ',
+    'ui.ourSocial': 'Mạng xã hội',
+    'ui.ourRooms': 'Phòng nghỉ',
+    'ui.contactUs': 'Liên hệ',
+    'ui.address': 'Địa chỉ',
+    'ui.tel': 'Điện thoại',
+    'ui.hotelSub': 'Khách sạn',
+
+    // Hero
+    'hero.roomsSuites': 'Phòng & Hạng phòng',
+
+    // Booking widget
+    'widget.searchRooms': 'Tìm phòng',
+    'widget.startBooking': 'Bắt đầu đặt phòng',
+    'widget.guest': 'Khách',
+    'widget.checkAvailability': 'Kiểm tra phòng trống',
+    'widget.holiday': 'Kỳ nghỉ',
+    'widget.holidayDesc':
+      'Nghỉ dưỡng giữa vùng đất di sản Ninh Bình. Phòng nghỉ tiện nghi, dịch vụ chu đáo, chỉ vài phút tới Tràng An và Bái Đính.',
+    'widget.bestPrice': 'Giá tốt nhất',
+    'widget.flashSale': 'Ưu đãi nhanh',
+    'widget.perNightShort': 'mỗi đêm',
+
+    // Section subtitles
+    'home.rooms.subtitle': 'Hạng phòng',
+    'home.amenities.subtitle': 'Trải nghiệm',
+    'home.reviews.subtitle': 'Cảm nhận',
+    'home.offers.subtitle': 'Ưu đãi',
+    'rooms.subtitle': 'Bảng giá',
+    'amenities.subtitle': 'Dịch vụ',
+    'reviews.subtitle': 'Nhận xét',
+    'offers.subtitle': 'Khuyến mãi',
+    'area.subtitle': 'Khám phá',
+    'about.subtitle': 'Câu chuyện',
+    'contact.subtitle': 'Kết nối',
+
+    // Room card meta
+    'card.guests': 'khách',
+    'card.from': 'Từ',
+
     // Common
     'common.loading': 'Đang tải...',
     'common.backToList': '← Quay lại',
+    'common.viewAll': 'Xem tất cả',
   },
   en: {
     // Navigation
@@ -334,6 +378,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'reviews.submitting': 'Submitting...',
     'reviews.noReviews': 'No reviews yet.',
     'reviews.reviews': 'reviews',
+    'reviews.thanks': 'Thank you for your review!',
+    'reviews.error': 'Something went wrong, please try again.',
 
     // Rooms page
     'rooms.title': 'Rooms & Rates',
@@ -429,8 +475,50 @@ export const translations: Record<Locale, Record<string, string>> = {
     'lang.vi': 'Tiếng Việt',
     'lang.en': 'English',
 
+    // Topbar / chrome
+    'ui.languages': 'Languages',
+    'ui.ourSocial': 'Our Social',
+    'ui.ourRooms': 'Our Rooms',
+    'ui.contactUs': 'Contact Us',
+    'ui.address': 'Address',
+    'ui.tel': 'Tel',
+    'ui.hotelSub': 'Hotel',
+
+    // Hero
+    'hero.roomsSuites': 'Rooms & Suites',
+
+    // Booking widget
+    'widget.searchRooms': 'Search Rooms',
+    'widget.startBooking': 'Start Booking',
+    'widget.guest': 'Guest',
+    'widget.checkAvailability': 'Check Availability',
+    'widget.holiday': 'Holiday',
+    'widget.holidayDesc':
+      'A retreat in the heart of Ninh Binh heritage land. Comfortable rooms, attentive service, minutes from Trang An and Bai Dinh.',
+    'widget.bestPrice': 'Best Season Price',
+    'widget.flashSale': 'Flash Sale',
+    'widget.perNightShort': 'per night',
+
+    // Section subtitles
+    'home.rooms.subtitle': 'Room Types',
+    'home.amenities.subtitle': 'Experience',
+    'home.reviews.subtitle': 'Testimonials',
+    'home.offers.subtitle': 'Promotions',
+    'rooms.subtitle': 'Rates',
+    'amenities.subtitle': 'Services',
+    'reviews.subtitle': 'Testimonials',
+    'offers.subtitle': 'Promotions',
+    'area.subtitle': 'Discover',
+    'about.subtitle': 'Our Story',
+    'contact.subtitle': 'Get In Touch',
+
+    // Room card meta
+    'card.guests': 'guests',
+    'card.from': 'From',
+
     // Common
     'common.loading': 'Loading...',
     'common.backToList': '← Back',
+    'common.viewAll': 'View All',
   },
 }

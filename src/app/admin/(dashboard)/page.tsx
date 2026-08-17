@@ -38,7 +38,7 @@ export default async function AdminDashboard() {
   const stats = [
     { label: 'Đặt phòng tháng này', value: bookingsThisMonth.toString(), icon: CalendarDays, color: 'text-blue-600 bg-blue-50' },
     { label: 'Công suất phòng', value: `${occupancyRate}%`, icon: BedDouble, color: 'text-green-600 bg-green-50' },
-    { label: 'Doanh thu tháng', value: formatVND(revenueThisMonth._sum.totalPrice || 0), icon: DollarSign, color: 'text-amber-600 bg-amber-50' },
+    { label: 'Doanh thu tháng', value: formatVND(revenueThisMonth._sum.totalPrice || 0), icon: DollarSign, color: 'text-brand-dark bg-brand/10' },
     { label: 'Chờ xác nhận', value: pendingBookings.toString(), icon: AlertTriangle, color: 'text-orange-600 bg-orange-50' },
   ]
 
