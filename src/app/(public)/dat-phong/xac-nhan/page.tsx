@@ -110,14 +110,14 @@ function BookingConfirmContent() {
     setSubmitting(false)
   }
 
-  const row = 'flex items-center justify-between py-2.5 text-xs font-light'
+  const row = 'flex items-center justify-between py-2.5 text-[15px]'
   const rowLabel = 'text-ink-soft'
 
   return (
     <div className="px-4 py-14 sm:px-6 lg:px-10 lg:py-20">
       <div className="mx-auto max-w-5xl">
         <div className="mb-12 text-center">
-          <h1 className="text-2xl font-extralight uppercase leading-tight tracking-[0.22em] text-ink lg:text-4xl">
+          <h1 className="text-2xl font-light uppercase leading-tight tracking-[0.12em] text-ink lg:text-4xl">
             {t('confirm.title')}
           </h1>
           <span className="mx-auto mt-5 block h-px w-14 bg-brand" />
@@ -127,7 +127,7 @@ function BookingConfirmContent() {
           {/* Form */}
           <div className="lg:col-span-2">
             <div className="border border-line p-8 lg:p-10">
-              <h2 className="text-[11px] uppercase tracking-[0.22em] text-ink">
+              <h2 className="text-[13px] uppercase tracking-[0.12em] text-ink">
                 {t('confirm.guestInfo')}
               </h2>
               <span className="mt-4 mb-8 block h-px w-10 bg-brand" />
@@ -167,19 +167,19 @@ function BookingConfirmContent() {
                   onChange={(e) => setFormData({ ...formData, nationality: e.target.value })}
                 />
                 <div>
-                  <label className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-ink-soft">
+                  <label className="mb-2 block text-[12px] uppercase tracking-[0.12em] text-ink-soft">
                     {t('confirm.specialRequests')}
                   </label>
                   <textarea
                     value={formData.specialRequests}
                     onChange={(e) => setFormData({ ...formData, specialRequests: e.target.value })}
                     rows={3}
-                    className="w-full border border-line bg-white px-4 py-3 text-sm font-light text-ink transition-colors focus:border-brand focus:outline-none"
+                    className="w-full border border-line bg-white px-4 py-3 text-base text-ink transition-colors focus:border-brand focus:outline-none"
                   />
                 </div>
 
                 <div className="border-t border-line pt-6">
-                  <label className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-ink-soft">
+                  <label className="mb-2 block text-[12px] uppercase tracking-[0.12em] text-ink-soft">
                     {t('confirm.discountCode')}
                   </label>
                   <div className="flex gap-3">
@@ -193,16 +193,16 @@ function BookingConfirmContent() {
                     </Button>
                   </div>
                   {discount && (
-                    <p className="mt-2 text-xs font-light text-emerald-700">
+                    <p className="mt-2 text-[15px] text-emerald-700">
                       {discount.description} · −{formatVND(discount.discountAmount)}
                     </p>
                   )}
                   {discountError && (
-                    <p className="mt-2 text-xs font-light text-red-600">{discountError}</p>
+                    <p className="mt-2 text-[15px] text-red-600">{discountError}</p>
                   )}
                 </div>
 
-                {error && <p className="text-xs font-light text-red-600">{error}</p>}
+                {error && <p className="text-[15px] text-red-600">{error}</p>}
 
                 <Button type="submit" size="lg" className="w-full" disabled={submitting}>
                   {submitting
@@ -216,7 +216,7 @@ function BookingConfirmContent() {
           {/* Tóm tắt */}
           <div>
             <div className="sticky top-32 bg-sand p-8">
-              <h2 className="text-[11px] uppercase tracking-[0.22em] text-ink">
+              <h2 className="text-[13px] uppercase tracking-[0.12em] text-ink">
                 {t('confirm.bookingInfo')}
               </h2>
               <span className="mt-4 mb-6 block h-px w-10 bg-brand" />
@@ -282,10 +282,10 @@ function BookingConfirmContent() {
               </div>
 
               <div className="mt-5 border-t border-ink/15 pt-5 text-center">
-                <p className="text-[10px] uppercase tracking-[0.2em] text-ink-soft">
+                <p className="text-[12px] uppercase tracking-[0.12em] text-ink-soft">
                   {t('confirm.totalPrice')}
                 </p>
-                <p className="mt-2 text-2xl font-extralight text-ink">{formatVND(finalTotal)}</p>
+                <p className="mt-2 text-2xl font-light text-ink">{formatVND(finalTotal)}</p>
               </div>
             </div>
           </div>
@@ -299,7 +299,7 @@ export default function BookingConfirmPage() {
   return (
     <Suspense
       fallback={
-        <div className="py-24 text-center text-[10px] uppercase tracking-[0.2em] text-ink-soft">
+        <div className="py-24 text-center text-[12px] uppercase tracking-[0.12em] text-ink-soft">
           ...
         </div>
       }

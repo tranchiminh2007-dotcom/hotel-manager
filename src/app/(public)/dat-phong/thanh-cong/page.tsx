@@ -21,22 +21,22 @@ function SuccessContent() {
           <Check className="h-6 w-6 text-brand" strokeWidth={1.3} />
         </div>
 
-        <h1 className="mt-8 text-2xl font-extralight uppercase leading-tight tracking-[0.2em] text-ink lg:text-3xl">
+        <h1 className="mt-8 text-2xl font-light uppercase leading-tight tracking-[0.12em] text-ink lg:text-3xl">
           {t('success.title')}
         </h1>
         <span className="mx-auto mt-5 block h-px w-14 bg-brand" />
-        <p className="mt-6 text-sm font-light leading-relaxed text-ink-soft">
+        <p className="mt-6 text-base leading-[1.75] text-ink-soft">
           {t('success.desc')}
         </p>
 
         <div className="mt-10 bg-sand px-8 py-10">
-          <p className="text-[10px] uppercase tracking-[0.24em] text-ink-soft">
+          <p className="text-[12px] uppercase tracking-[0.14em] text-ink-soft">
             {t('success.code')}
           </p>
-          <p className="mt-4 text-2xl font-light tracking-[0.14em] text-brand-deep lg:text-3xl">
+          <p className="mt-4 text-2xl font-light tracking-[0.08em] text-brand-deep lg:text-3xl">
             {code}
           </p>
-          <p className="mt-5 text-xs font-light text-ink-soft">{t('success.saveCode')}</p>
+          <p className="mt-5 text-[15px] text-ink-soft">{t('success.saveCode')}</p>
         </div>
 
         <div className="mt-10 space-y-3">
@@ -59,7 +59,7 @@ export default function BookingSuccessPage() {
   return (
     <Suspense
       fallback={
-        <div className="py-24 text-center text-[10px] uppercase tracking-[0.2em] text-ink-soft">
+        <div className="py-24 text-center text-[12px] uppercase tracking-[0.12em] text-ink-soft">
           ...
         </div>
       }

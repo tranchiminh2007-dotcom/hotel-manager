@@ -15,21 +15,21 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         disabled={disabled}
         className={cn(
-          'inline-flex items-center justify-center uppercase font-normal transition-all duration-300 focus:outline-none disabled:opacity-45 disabled:pointer-events-none whitespace-nowrap',
+          'inline-flex items-center justify-center font-normal tracking-[0.05em] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-deep disabled:opacity-50 disabled:pointer-events-none whitespace-nowrap',
           {
-            'bg-brand text-white hover:bg-brand-deep': variant === 'primary',
+            'bg-brand-deep text-white hover:bg-night': variant === 'primary',
             'bg-night text-white hover:bg-ink': variant === 'secondary',
-            'border border-ink/25 text-ink hover:border-ink hover:bg-ink hover:text-white':
+            'border border-ink/30 text-ink hover:border-ink hover:bg-ink hover:text-white':
               variant === 'outline',
-            'border border-white/50 text-white hover:bg-white hover:text-ink':
+            'border border-white/60 text-white hover:bg-white hover:text-ink':
               variant === 'light',
-            'bg-red-700/90 text-white hover:bg-red-800': variant === 'danger',
+            'bg-red-700 text-white hover:bg-red-800': variant === 'danger',
             'text-ink-soft hover:text-ink': variant === 'ghost',
           },
           {
-            'px-5 py-2.5 text-[10px] tracking-[0.18em]': size === 'sm',
-            'px-7 py-3 text-[11px] tracking-[0.2em]': size === 'md',
-            'px-10 py-4 text-xs tracking-[0.22em]': size === 'lg',
+            'px-5 py-2.5 text-[13px]': size === 'sm',
+            'px-7 py-3 text-[14px]': size === 'md',
+            'px-9 py-4 text-[15px]': size === 'lg',
           },
           className
         )}

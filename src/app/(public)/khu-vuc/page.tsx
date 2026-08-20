@@ -4,6 +4,7 @@ import T from '@/components/ui/T'
 import TD from '@/components/ui/TD'
 import { prisma } from '@/lib/prisma'
 import { placeholderImage } from '@/lib/utils'
+import CoverImage from '@/components/ui/CoverImage'
 
 export const metadata = {
   title: 'Khu vực lân cận',
@@ -32,7 +33,7 @@ export default async function LocalAreaPage() {
           {Object.entries(grouped).map(([category, items]) => (
             <div key={category}>
               <div className="mb-10 flex items-center gap-5">
-                <h2 className="whitespace-nowrap text-[11px] uppercase tracking-[0.26em] text-ink">
+                <h2 className="whitespace-nowrap text-[13px] uppercase tracking-[0.16em] text-ink">
                   <T k={`area.cat.${category}`} />
                 </h2>
                 <span className="h-px flex-1 bg-line" />
@@ -42,23 +43,19 @@ export default async function LocalAreaPage() {
                 {items.map((attraction) => (
                   <div key={attraction.id} className="group border border-line">
                     <div className="relative aspect-[16/10] overflow-hidden bg-sand">
-                      <img
-                        src={attraction.imageUrl || placeholderImage()}
-                        alt={attraction.name}
-                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
-                      />
+                      <CoverImage src={attraction.imageUrl || placeholderImage()} alt={attraction.name} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]" />
                       <div className="absolute inset-0 bg-black/20" />
-                      <span className="absolute bottom-4 left-4 right-4 text-sm font-light uppercase tracking-[0.14em] text-white">
+                      <span className="absolute bottom-4 left-4 right-4 text-base uppercase tracking-[0.08em] text-white">
                         <TD>{attraction.name}</TD>
                       </span>
                     </div>
 
                     <div className="p-6">
-                      <p className="text-xs font-light leading-relaxed text-ink-soft line-clamp-4">
+                      <p className="text-[15px] leading-[1.75] text-ink-soft line-clamp-4">
                         <TD>{attraction.description}</TD>
                       </p>
                       <div className="mt-6 flex items-center justify-between border-t border-line pt-5">
-                        <span className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.16em] text-brand">
+                        <span className="flex items-center gap-1.5 text-[12px] uppercase tracking-[0.08em] text-brand">
                           <Navigation className="h-3 w-3" strokeWidth={1.5} />
                           <TD>{attraction.distance}</TD>
                         </span>
@@ -67,7 +64,7 @@ export default async function LocalAreaPage() {
                             href={attraction.mapUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.16em] text-ink-soft transition-colors hover:text-ink"
+                            className="flex items-center gap-1.5 text-[12px] uppercase tracking-[0.08em] text-ink-soft transition-colors hover:text-ink"
                           >
                             <MapPin className="h-3 w-3" strokeWidth={1.5} />
                             <T k="area.viewMap" />

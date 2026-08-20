@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { Users, Maximize, Star } from 'lucide-react'
+import { Users, Maximize } from 'lucide-react'
+import CoverImage from '@/components/ui/CoverImage'
 import { useLanguage } from '@/lib/language-context'
 import { translateData } from '@/lib/data-translations'
 import { formatVND } from '@/lib/format'
@@ -28,36 +29,34 @@ export default function RoomCard({
   const label = translateData(name, locale)
 
   return (
-    <Link href={`/phong/${slug}`} className="group relative block overflow-hidden">
-      <div className="aspect-[4/3] overflow-hidden bg-sand">
-        <img
-          src={imageUrl || placeholderImage(700, 525, label)}
+    <Link href={`/phong/${slug}`} className="group block border border-line">
+      <div className="relative aspect-[4/3] overflow-hidden bg-sand">
+        <CoverImage
+          src={imageUrl || placeholderImage()}
           alt={label}
-          className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="transition-transform duration-700 ease-out group-hover:scale-[1.04]"
         />
-      </div>
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/55 to-transparent" />
 
-      {/* Nhãn tên phòng */}
-      <span className="absolute left-1/2 top-5 -translate-x-1/2 bg-white/95 px-5 py-2 text-[9px] uppercase tracking-[0.22em] text-ink shadow-sm">
-        {label}
-      </span>
-
-      {/* Thông tin dưới ảnh */}
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent px-4 pb-4 pt-12">
-        <div className="flex items-end justify-between gap-2 text-[9px] uppercase tracking-[0.16em] text-white">
+        <div className="absolute inset-x-0 bottom-0 flex items-center justify-between px-5 pb-4 text-[13px] text-white">
           <span className="flex items-center gap-1.5">
-            <Users className="h-3 w-3" strokeWidth={1.5} />
+            <Users className="h-3.5 w-3.5" strokeWidth={1.6} />
             {maxGuests} {t('card.guests')}
           </span>
           <span className="flex items-center gap-1.5">
-            <Maximize className="h-3 w-3" strokeWidth={1.5} />
+            <Maximize className="h-3.5 w-3.5" strokeWidth={1.6} />
             {size} m²
           </span>
-          <span className="flex items-center gap-1.5">
-            <Star className="h-3 w-3" strokeWidth={1.5} />
-            {t('card.from')} {formatVND(basePrice)}
-          </span>
         </div>
+      </div>
+
+      <div className="px-6 py-5 text-center">
+        <h3 className="text-[17px] uppercase tracking-[0.08em] text-ink">{label}</h3>
+        <p className="mt-2.5 text-[15px] text-ink-soft">
+          <span className="text-[19px] text-brand-deep">{formatVND(basePrice)}</span>{' '}
+          {t('rooms.perNight')}
+        </p>
       </div>
     </Link>
   )

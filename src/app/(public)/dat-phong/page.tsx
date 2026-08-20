@@ -10,6 +10,7 @@ import { placeholderImage } from '@/lib/utils'
 import { formatVND } from '@/lib/format'
 import { useLanguage } from '@/lib/language-context'
 import { translateData } from '@/lib/data-translations'
+import CoverImage from '@/components/ui/CoverImage'
 
 interface AvailableRoom {
   id: string
@@ -77,10 +78,10 @@ function BookingSearchContent() {
     <div className="px-4 py-14 sm:px-6 lg:px-10 lg:py-20">
       <div className="mx-auto max-w-[1400px]">
         <div className="mb-12 text-center">
-          <h1 className="text-3xl font-extralight uppercase leading-tight tracking-[0.22em] text-ink lg:text-[2.75rem]">
+          <h1 className="text-3xl font-light uppercase leading-tight tracking-[0.12em] text-ink lg:text-[2.75rem]">
             {t('booking.title')}
           </h1>
-          <p className="mt-4 text-[10px] uppercase tracking-[0.3em] text-brand">
+          <p className="mt-4 text-[12px] uppercase tracking-[0.18em] text-brand">
             — {t('booking.subtitle')} —
           </p>
         </div>
@@ -123,14 +124,14 @@ function BookingSearchContent() {
 
         {searched && results.length === 0 && (
           <div className="py-20 text-center">
-            <p className="text-sm font-light text-ink">{t('booking.noResults')}</p>
-            <p className="mt-2 text-xs font-light text-ink-soft">{t('booking.tryOther')}</p>
+            <p className="text-base text-ink">{t('booking.noResults')}</p>
+            <p className="mt-2 text-[15px] text-ink-soft">{t('booking.tryOther')}</p>
           </div>
         )}
 
         {results.length > 0 && (
           <div className="mt-14 space-y-6">
-            <p className="text-center text-[10px] uppercase tracking-[0.2em] text-ink-soft">
+            <p className="text-center text-[12px] uppercase tracking-[0.12em] text-ink-soft">
               {t('booking.found')}{' '}
               <span className="text-ink">
                 {results.reduce((s, r) => s + r.availableCount, 0)}
@@ -143,20 +144,16 @@ function BookingSearchContent() {
               <div key={rt.id} className="border border-line">
                 <div className="grid lg:grid-cols-5">
                   <div className="relative aspect-[4/3] overflow-hidden bg-sand lg:col-span-2 lg:aspect-auto lg:min-h-[300px]">
-                    <img
-                      src={rt.imageUrl || placeholderImage()}
-                      alt={rt.name}
-                      className="absolute inset-0 h-full w-full object-cover"
-                    />
+                    <CoverImage src={rt.imageUrl || placeholderImage()} alt={rt.name} sizes="(max-width: 1024px) 100vw, 40vw" />
                   </div>
 
                   <div className="p-8 lg:col-span-3 lg:p-10">
                     <div className="flex flex-wrap items-start justify-between gap-5">
                       <div>
-                        <h3 className="text-lg font-light uppercase tracking-[0.18em] text-ink">
+                        <h3 className="text-lg font-light uppercase tracking-[0.1em] text-ink">
                           {td(rt.name)}
                         </h3>
-                        <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[10px] uppercase tracking-[0.14em] text-ink-soft">
+                        <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[12px] uppercase tracking-[0.08em] text-ink-soft">
                           <span className="flex items-center gap-1.5">
                             <BedDouble className="h-3.5 w-3.5 text-brand" strokeWidth={1.3} />
                             {td(rt.bedType)}
@@ -172,13 +169,13 @@ function BookingSearchContent() {
                         </div>
                       </div>
                       <div className="text-right">
-                        <p className="text-xl font-extralight text-ink">
+                        <p className="text-xl font-light text-ink">
                           {formatVND(rt.basePrice)}
                         </p>
-                        <p className="text-[9px] uppercase tracking-[0.18em] text-ink-soft">
+                        <p className="text-[12px] uppercase tracking-[0.1em] text-ink-soft">
                           {t('rooms.perNight')}
                         </p>
-                        <p className="mt-2 text-[10px] uppercase tracking-[0.14em] text-brand">
+                        <p className="mt-2 text-[12px] uppercase tracking-[0.08em] text-brand">
                           {t('booking.total')}: {formatVND(rt.basePrice * nights)}
                         </p>
                       </div>
@@ -198,7 +195,7 @@ function BookingSearchContent() {
                           </Link>
                         ))}
                       </div>
-                      <p className="mt-4 text-[9px] uppercase tracking-[0.16em] text-ink-soft">
+                      <p className="mt-4 text-[12px] uppercase tracking-[0.08em] text-ink-soft">
                         {rt.availableCount} {t('booking.remaining')}
                       </p>
                     </div>
@@ -217,7 +214,7 @@ export default function BookingSearchPage() {
   return (
     <Suspense
       fallback={
-        <div className="py-24 text-center text-[10px] uppercase tracking-[0.2em] text-ink-soft">
+        <div className="py-24 text-center text-[12px] uppercase tracking-[0.12em] text-ink-soft">
           ...
         </div>
       }

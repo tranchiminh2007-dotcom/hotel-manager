@@ -49,13 +49,13 @@ export default function ContactPage() {
     <div className="px-4 py-14 sm:px-6 lg:px-10 lg:py-20">
       <div className="mx-auto max-w-[1400px]">
         <div className="mb-14 text-center">
-          <h1 className="text-3xl font-extralight uppercase leading-tight tracking-[0.22em] text-ink lg:text-[2.75rem]">
+          <h1 className="text-3xl font-light uppercase leading-tight tracking-[0.12em] text-ink lg:text-[2.75rem]">
             {t('contact.title')}
           </h1>
-          <p className="mt-4 text-[10px] uppercase tracking-[0.3em] text-brand">
+          <p className="mt-4 text-[12px] uppercase tracking-[0.18em] text-brand">
             — {t('contact.subtitle')} —
           </p>
-          <p className="mx-auto mt-6 max-w-2xl text-sm font-light leading-relaxed text-ink-soft">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-[1.75] text-ink-soft">
             {t('contact.desc')}
           </p>
         </div>
@@ -64,20 +64,20 @@ export default function ContactPage() {
         <div className="mb-14 grid gap-px bg-line lg:grid-cols-3">
           <div className="bg-white p-9 text-center">
             <MapPin className="mx-auto mb-5 h-6 w-6 text-brand" strokeWidth={1} />
-            <h3 className="text-[10px] uppercase tracking-[0.22em] text-ink">
+            <h3 className="text-[12px] uppercase tracking-[0.12em] text-ink">
               {t('contact.address')}
             </h3>
-            <p className="mt-3 text-xs font-light text-ink-soft">{HOTEL_CONFIG.address}</p>
+            <p className="mt-3 text-[15px] text-ink-soft">{HOTEL_CONFIG.address}</p>
           </div>
           <a
             href={`tel:${tel}`}
             className="group bg-white p-9 text-center transition-colors hover:bg-sand"
           >
             <Phone className="mx-auto mb-5 h-6 w-6 text-brand" strokeWidth={1} />
-            <h3 className="text-[10px] uppercase tracking-[0.22em] text-ink">
+            <h3 className="text-[12px] uppercase tracking-[0.12em] text-ink">
               {t('contact.phone')}
             </h3>
-            <p className="mt-3 text-xs font-light text-brand-deep group-hover:underline">
+            <p className="mt-3 text-[15px] text-brand-deep group-hover:underline">
               {HOTEL_CONFIG.phone}
             </p>
           </a>
@@ -86,10 +86,10 @@ export default function ContactPage() {
             className="group bg-white p-9 text-center transition-colors hover:bg-sand"
           >
             <Mail className="mx-auto mb-5 h-6 w-6 text-brand" strokeWidth={1} />
-            <h3 className="text-[10px] uppercase tracking-[0.22em] text-ink">
+            <h3 className="text-[12px] uppercase tracking-[0.12em] text-ink">
               {t('contact.email')}
             </h3>
-            <p className="mt-3 text-xs font-light text-brand-deep group-hover:underline">
+            <p className="mt-3 text-[15px] text-brand-deep group-hover:underline">
               {HOTEL_CONFIG.email}
             </p>
           </a>
@@ -98,7 +98,7 @@ export default function ContactPage() {
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-12">
           {/* Form */}
           <div className="border border-line p-8 lg:p-10">
-            <h2 className="text-[11px] uppercase tracking-[0.22em] text-ink">
+            <h2 className="text-[13px] uppercase tracking-[0.12em] text-ink">
               {t('contact.sendMessage')}
             </h2>
             <span className="mt-4 mb-8 block h-px w-10 bg-brand" />
@@ -139,7 +139,7 @@ export default function ContactPage() {
                 />
               </div>
               <div>
-                <label className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-ink-soft">
+                <label className="mb-2 block text-[12px] uppercase tracking-[0.12em] text-ink-soft">
                   {t('contact.message')}
                 </label>
                 <textarea
@@ -148,13 +148,13 @@ export default function ContactPage() {
                   placeholder={t('contact.messagePlaceholder')}
                   rows={5}
                   required
-                  className="w-full border border-line bg-white px-4 py-3 text-sm font-light text-ink transition-colors placeholder:text-ink-soft/60 focus:border-brand focus:outline-none"
+                  className="w-full border border-line bg-white px-4 py-3 text-base text-ink transition-colors placeholder:text-ink-soft/60 focus:border-brand focus:outline-none"
                 />
               </div>
 
               {result && (
                 <p
-                  className={`text-xs font-light ${ok ? 'text-brand-deep' : 'text-red-600'}`}
+                  className={`text-[15px] ${ok ? 'text-brand-deep' : 'text-red-600'}`}
                 >
                   {result}
                 </p>
@@ -169,7 +169,7 @@ export default function ContactPage() {
           {/* Giờ làm việc + bản đồ */}
           <div className="space-y-6">
             <div className="bg-sand p-8">
-              <h2 className="text-[11px] uppercase tracking-[0.22em] text-ink">
+              <h2 className="text-[13px] uppercase tracking-[0.12em] text-ink">
                 {t('contact.hours')}
               </h2>
               <span className="mt-4 mb-7 block h-px w-10 bg-brand" />
@@ -178,10 +178,10 @@ export default function ContactPage() {
                 <div className="flex items-start gap-4">
                   <Clock className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand" strokeWidth={1.2} />
                   <div>
-                    <p className="text-[11px] uppercase tracking-[0.16em] text-ink">
+                    <p className="text-[13px] uppercase tracking-[0.08em] text-ink">
                       {t('contact.reception')}
                     </p>
-                    <p className="mt-1.5 text-xs font-light text-ink-soft">
+                    <p className="mt-1.5 text-[15px] text-ink-soft">
                       {t('contact.receptionDesc')}
                     </p>
                   </div>
@@ -189,10 +189,10 @@ export default function ContactPage() {
                 <div className="flex items-start gap-4">
                   <Clock className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand" strokeWidth={1.2} />
                   <div>
-                    <p className="text-[11px] uppercase tracking-[0.16em] text-ink">
+                    <p className="text-[13px] uppercase tracking-[0.08em] text-ink">
                       {t('contact.restaurant')}
                     </p>
-                    <p className="mt-1.5 text-xs font-light text-ink-soft">
+                    <p className="mt-1.5 text-[15px] text-ink-soft">
                       {t('contact.breakfast')}
                     </p>
                   </div>

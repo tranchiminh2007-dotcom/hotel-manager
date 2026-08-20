@@ -22,29 +22,32 @@ export default function SectionHeader({
 
   return (
     <div className={cn('text-center', className)}>
+      {subtitleKey && (
+        <p
+          className={cn(
+            'mb-4 text-[12px] uppercase tracking-[0.18em]',
+            light ? 'text-brand' : 'text-brand-deep'
+          )}
+        >
+          {t(subtitleKey)}
+        </p>
+      )}
       <h2
         className={cn(
-          'text-2xl sm:text-3xl lg:text-[2.5rem] font-extralight uppercase leading-tight tracking-[0.2em] sm:tracking-[0.25em]',
+          'text-[26px] font-light uppercase tracking-[0.08em] sm:text-[32px] lg:text-[38px]',
           light ? 'text-white' : 'text-ink'
         )}
       >
         {t(titleKey)}
       </h2>
-      {subtitleKey && (
-        <p
-          className={cn(
-            'mt-4 text-[10px] uppercase tracking-[0.3em]',
-            light ? 'text-white/70' : 'text-brand'
-          )}
-        >
-          — {t(subtitleKey)} —
-        </p>
-      )}
+      <span
+        className={cn('mx-auto mt-6 block h-px w-16', light ? 'bg-white/40' : 'bg-brand')}
+      />
       {descKey && (
         <p
           className={cn(
-            'mt-5 mx-auto max-w-2xl text-sm font-light leading-relaxed',
-            light ? 'text-white/80' : 'text-ink-soft'
+            'mx-auto mt-7 max-w-2xl text-base leading-[1.75]',
+            light ? 'text-white/85' : 'text-ink-soft'
           )}
         >
           {t(descKey)}

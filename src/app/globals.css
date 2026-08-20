@@ -2,31 +2,44 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #2c2c2c;
+  --foreground: #23282b;
   color-scheme: light;
 }
 
 @theme {
-  --color-brand: #7fb2b6;
-  --color-brand-dark: #5f979c;
-  --color-brand-deep: #3f6c72;
-  --color-night: #2b3b40;
-  --color-ink: #2c2c2c;
-  --color-ink-soft: #7b7b7b;
-  --color-line: #e6e6e6;
-  --color-sand: #f8f8f6;
+  /* brand: dùng cho đường kẻ, icon trang trí (>= 3:1 trên nền trắng)
+     brand-deep: dùng cho MỌI nền có chữ trắng (>= 4.5:1) */
+  --color-brand: #5f9ba1;
+  --color-brand-dark: #4a848a;
+  --color-brand-deep: #35646a;
+  --color-night: #26343a;
+
+  /* Chữ: tương phản đủ cao để đọc thoải mái */
+  --color-ink: #23282b;        /* 15:1 trên nền trắng */
+  --color-ink-soft: #545c61;   /* 7.4:1 — dùng cho đoạn văn */
+  --color-ink-muted: #6b7379;  /* 5.3:1 — chỉ dùng cho chữ >= 13px */
+
+  --color-line: #e3e5e6;
+  --color-sand: #f7f7f5;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
-  font-weight: 300;
+  font-weight: 400;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 .font-display {
   font-family: var(--font-display), Georgia, serif;
+}
+
+/* Tiêu đề: nhẹ nhưng vẫn đọc rõ, giãn chữ vừa phải */
+h1, h2, h3 {
+  line-height: 1.25;
 }
 
 /* Bỏ mũi tên xoay của input number */
@@ -37,4 +50,20 @@ input[type='number']::-webkit-inner-spin-button {
 }
 input[type='number'] {
   -moz-appearance: textfield;
+}
+
+/* Cuộn mượt khi bấm liên kết neo, tôn trọng thiết lập giảm chuyển động */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

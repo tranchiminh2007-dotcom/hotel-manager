@@ -64,10 +64,10 @@ export default function ReviewsPage() {
     <div className="px-4 py-14 sm:px-6 lg:px-10 lg:py-20">
       <div className="mx-auto max-w-[1400px]">
         <div className="mb-14 text-center">
-          <h1 className="text-3xl font-extralight uppercase leading-tight tracking-[0.22em] text-ink lg:text-[2.75rem]">
+          <h1 className="text-3xl font-light uppercase leading-tight tracking-[0.12em] text-ink lg:text-[2.75rem]">
             {t('reviews.title')}
           </h1>
-          <p className="mt-4 text-[10px] uppercase tracking-[0.3em] text-brand">
+          <p className="mt-4 text-[12px] uppercase tracking-[0.18em] text-brand">
             — {t('reviews.subtitle')} —
           </p>
           {reviews.length > 0 && (
@@ -85,8 +85,8 @@ export default function ReviewsPage() {
                   />
                 ))}
               </span>
-              <span className="text-2xl font-extralight text-ink">{avgRating}</span>
-              <span className="text-[10px] uppercase tracking-[0.18em] text-ink-soft">
+              <span className="text-2xl font-light text-ink">{avgRating}</span>
+              <span className="text-[12px] uppercase tracking-[0.1em] text-ink-soft">
                 / 5 · {reviews.length} {t('reviews.reviews')}
               </span>
             </div>
@@ -113,17 +113,17 @@ export default function ReviewsPage() {
                         />
                       ))}
                     </span>
-                    <span className="text-[9px] uppercase tracking-[0.16em] text-ink-soft">
+                    <span className="text-[12px] uppercase tracking-[0.08em] text-ink-soft">
                       {new Date(review.createdAt).toLocaleDateString('vi-VN')}
                     </span>
                   </div>
 
                   {review.content && (
-                    <p className="mt-5 font-display text-base font-light italic leading-relaxed text-ink-soft">
+                    <p className="mt-5 font-display text-base font-light italic leading-[1.75] text-ink-soft">
                       “{review.content}”
                     </p>
                   )}
-                  <p className="mt-6 text-[10px] uppercase tracking-[0.2em] text-ink">
+                  <p className="mt-6 text-[12px] uppercase tracking-[0.12em] text-ink">
                     {review.guestName}
                   </p>
                 </div>
@@ -131,7 +131,7 @@ export default function ReviewsPage() {
             </div>
 
             {reviews.length === 0 && loaded && (
-              <p className="py-16 text-center text-xs font-light text-ink-soft">
+              <p className="py-16 text-center text-[15px] text-ink-soft">
                 {t('reviews.noReviews')}
               </p>
             )}
@@ -140,7 +140,7 @@ export default function ReviewsPage() {
           {/* Form viết đánh giá */}
           <div>
             <div className="sticky top-32 bg-sand p-8">
-              <h2 className="text-[11px] uppercase tracking-[0.22em] text-ink">
+              <h2 className="text-[13px] uppercase tracking-[0.12em] text-ink">
                 {t('reviews.writeReview')}
               </h2>
               <span className="mt-4 mb-7 block h-px w-10 bg-brand" />
@@ -154,7 +154,7 @@ export default function ReviewsPage() {
                 />
 
                 <div>
-                  <label className="mb-2.5 block text-[10px] uppercase tracking-[0.2em] text-ink-soft">
+                  <label className="mb-2.5 block text-[12px] uppercase tracking-[0.12em] text-ink-soft">
                     {t('reviews.rating')}
                   </label>
                   <div className="flex gap-1.5">
@@ -180,19 +180,19 @@ export default function ReviewsPage() {
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-ink-soft">
+                  <label className="mb-2 block text-[12px] uppercase tracking-[0.12em] text-ink-soft">
                     {t('reviews.comment')}
                   </label>
                   <textarea
                     value={formData.content}
                     onChange={(e) => setFormData({ ...formData, content: e.target.value })}
                     rows={4}
-                    className="w-full border border-line bg-white px-4 py-3 text-sm font-light text-ink transition-colors focus:border-brand focus:outline-none"
+                    className="w-full border border-line bg-white px-4 py-3 text-base text-ink transition-colors focus:border-brand focus:outline-none"
                   />
                 </div>
 
                 {message && (
-                  <p className="text-xs font-light text-brand-deep">{message}</p>
+                  <p className="text-[15px] text-brand-deep">{message}</p>
                 )}
 
                 <Button

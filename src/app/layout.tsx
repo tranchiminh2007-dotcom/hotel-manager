@@ -1,14 +1,16 @@
 import type { Metadata } from 'next'
-import { Raleway, Cormorant_Garamond } from 'next/font/google'
+import { Be_Vietnam_Pro, Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 
-const raleway = Raleway({
+/** Font chính: thiết kế riêng cho tiếng Việt, dấu hiển thị rõ ở mọi cỡ chữ. */
+const beVietnamPro = Be_Vietnam_Pro({
   subsets: ['vietnamese', 'latin'],
-  weight: ['200', '300', '400', '500', '600'],
+  weight: ['300', '400', '500', '600'],
   variable: '--font-sans',
   display: 'swap',
 })
 
+/** Font trang trí cho vài tiêu đề lớn và trích dẫn. */
 const cormorant = Cormorant_Garamond({
   subsets: ['vietnamese', 'latin'],
   weight: ['300', '400', '500'],
@@ -34,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="vi"
-      className={`${raleway.variable} ${cormorant.variable} h-full antialiased`}
+      className={`${beVietnamPro.variable} ${cormorant.variable} h-full antialiased`}
       style={{ colorScheme: 'light' }}
     >
       <body

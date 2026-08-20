@@ -18,17 +18,18 @@ export default function PageHeader({
   const { t } = useLanguage()
 
   return (
-    <div className="text-center mb-14 lg:mb-20">
-      <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extralight uppercase leading-tight tracking-[0.2em] sm:tracking-[0.25em] text-ink">
-        {t(titleKey)}
-      </h1>
+    <div className="mb-14 text-center lg:mb-20">
       {subtitleKey && (
-        <p className="mt-4 text-[10px] uppercase tracking-[0.3em] text-brand">
-          — {t(subtitleKey)} —
+        <p className="mb-4 text-[12px] uppercase tracking-[0.18em] text-brand-deep">
+          {t(subtitleKey)}
         </p>
       )}
+      <h1 className="text-[28px] font-light uppercase tracking-[0.08em] text-ink sm:text-[34px] lg:text-[40px]">
+        {t(titleKey)}
+      </h1>
+      <span className="mx-auto mt-6 block h-px w-16 bg-brand" />
       {descKey && (
-        <p className="mt-6 mx-auto max-w-2xl text-sm font-light leading-relaxed text-ink-soft">
+        <p className="mx-auto mt-7 max-w-2xl text-base leading-[1.75] text-ink-soft">
           {t(descKey)}
         </p>
       )}
