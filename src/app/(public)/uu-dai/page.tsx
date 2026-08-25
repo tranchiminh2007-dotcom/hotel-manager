@@ -31,7 +31,7 @@ export default async function OffersPage() {
         {promotions.length > 0 && (
           <div className="mb-20">
             <div className="mb-10 flex items-center gap-5">
-              <h2 className="whitespace-nowrap text-[13px] uppercase tracking-[0.16em] text-ink">
+              <h2 className="whitespace-nowrap eyebrow text-ink">
                 <T k="offers.promotions" />
               </h2>
               <span className="h-px flex-1 bg-line" />
@@ -41,7 +41,7 @@ export default async function OffersPage() {
               {promotions.map((promo) => (
                 <div key={promo.id} className="flex flex-col border border-line p-9 text-center">
                   {promo.badgeText && (
-                    <span className="mx-auto mb-6 bg-brand-deep px-3.5 py-1.5 text-[12px] uppercase tracking-[0.12em] text-white">
+                    <span className="mx-auto mb-6 bg-brand-deep px-3.5 py-1.5 eyebrow text-white">
                       <TD>{promo.badgeText}</TD>
                     </span>
                   )}
@@ -49,10 +49,10 @@ export default async function OffersPage() {
                     <TD>{promo.title}</TD>
                   </h3>
                   <span className="mx-auto mt-4 block h-px w-10 bg-brand" />
-                  <p className="mt-5 flex-1 text-[15px] leading-[1.75] text-ink-soft">
+                  <p className="mt-5 flex-1 body-text leading-[1.75] text-ink-soft">
                     <TD>{promo.description}</TD>
                   </p>
-                  <p className="mt-6 flex items-center justify-center gap-1.5 text-[12px] uppercase tracking-[0.1em] text-ink-soft">
+                  <p className="mt-6 flex items-center justify-center gap-1.5 eyebrow text-ink-soft">
                     <Calendar className="h-3 w-3" strokeWidth={1.5} />
                     <T k="offers.until" /> {formatDate(promo.validTo)}
                   </p>
@@ -70,7 +70,7 @@ export default async function OffersPage() {
         {discountCodes.length > 0 && (
           <div className="mb-20">
             <div className="mb-10 flex items-center gap-5">
-              <h2 className="whitespace-nowrap text-[13px] uppercase tracking-[0.16em] text-ink">
+              <h2 className="whitespace-nowrap eyebrow text-ink">
                 <T k="offers.discountCodes" />
               </h2>
               <span className="h-px flex-1 bg-line" />
@@ -91,11 +91,11 @@ export default async function OffersPage() {
                       <code className="bg-sand px-3 py-1 text-[13px] tracking-[0.08em] text-ink">
                         {dc.code}
                       </code>
-                      <span className="text-[13px] uppercase tracking-[0.08em] text-brand-deep">
+                      <span className="eyebrow text-brand-deep">
                         {dc.type === 'PERCENTAGE' ? `−${dc.value}%` : `−${formatVND(dc.value)}`}
                       </span>
                     </div>
-                    <p className="mt-2.5 text-[12px] uppercase tracking-[0.08em] text-ink-soft">
+                    <p className="mt-2.5 eyebrow text-ink-soft">
                       <T k="offers.minNights" /> {dc.minNights} <T k="offers.nightsUnit" /> ·{' '}
                       <T k="offers.until" /> {formatDate(dc.validTo)}
                     </p>
@@ -108,10 +108,10 @@ export default async function OffersPage() {
 
         {/* Tại sao đặt trực tiếp */}
         <div className="relative overflow-hidden">
-          <CoverImage src="/images/hotel-hero.jpg" alt="" sizes="100vw" />
+          <CoverImage src="/images/hotel-hero.jpg" alt="" sizes="100vw" quality={50} />
           <div className="absolute inset-0 bg-night/85" />
           <div className="relative px-8 py-16 text-center lg:px-14 lg:py-20">
-            <h2 className="text-xl font-light uppercase tracking-[0.12em] text-white lg:text-2xl">
+            <h2 className="text-xl h-section text-white lg:text-2xl">
               <T k="offers.whyDirect" />
             </h2>
             <span className="mx-auto mt-5 block h-px w-14 bg-brand" />
@@ -124,10 +124,10 @@ export default async function OffersPage() {
               ].map((item) => (
                 <div key={item.tKey}>
                   <span className="block text-2xl font-light text-brand">{item.n}</span>
-                  <h3 className="mt-4 text-[13px] uppercase tracking-[0.12em] text-white">
+                  <h3 className="mt-4 eyebrow text-white">
                     <T k={item.tKey} />
                   </h3>
-                  <p className="mt-3.5 text-[15px] leading-[1.75] text-white/65">
+                  <p className="mt-3.5 body-text leading-[1.75] text-white/65">
                     <T k={item.dKey} />
                   </p>
                 </div>

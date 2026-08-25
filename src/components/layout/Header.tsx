@@ -65,10 +65,10 @@ export default function Header() {
       <div className="hidden bg-white lg:block">
         <div className="mx-auto max-w-[1400px] px-10 py-8 text-center">
           <Link href="/" className="inline-block">
-            <span className="block text-[2rem] font-light uppercase leading-none tracking-[0.18em] text-ink">
+            <span className="block text-[1.75rem] font-normal uppercase leading-none tracking-[0.16em] text-ink">
               Long Hải
             </span>
-            <span className="mt-2.5 block text-[12px] uppercase tracking-[0.22em] text-ink-muted">
+            <span className="mt-2.5 block eyebrow text-ink-muted">
               — {t('ui.hotelSub')} —
             </span>
           </Link>
@@ -80,7 +80,7 @@ export default function Header() {
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           {/* Mobile: tên + nút menu */}
           <div className="flex items-center justify-between py-4 lg:hidden">
-            <Link href="/" className="text-lg font-light uppercase tracking-[0.16em] text-ink">
+            <Link href="/" className="text-[19px] font-medium uppercase tracking-[0.12em] text-ink">
               Long Hải
             </Link>
             <button
@@ -104,7 +104,7 @@ export default function Header() {
                 {i > 0 && <span className="h-3.5 w-px bg-line" />}
                 <Link
                   href={item.href}
-                  className="px-4 text-[13px] tracking-[0.06em] text-ink-soft transition-colors hover:text-brand-deep"
+                  className="px-4 text-[14px] text-ink-soft transition-colors hover:text-brand-deep"
                 >
                   {t(item.key)}
                 </Link>
@@ -112,7 +112,7 @@ export default function Header() {
             ))}
             <Link
               href="/dat-phong"
-              className="ml-5 bg-brand-deep px-6 py-2.5 text-[13px] tracking-[0.06em] text-white transition-colors hover:bg-night"
+              className="ml-5 bg-brand-deep px-6 py-2.5 text-[13px] font-semibold uppercase tracking-[0.1em] text-white transition-colors hover:bg-night"
             >
               {t('nav.bookNow')}
             </Link>
@@ -128,7 +128,7 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block border-b border-line/70 py-3.5 text-[15px] text-ink-soft transition-colors hover:text-brand-deep"
+                  className="block border-b border-line/70 py-3.5 body-text text-ink-soft transition-colors hover:text-brand-deep"
                 >
                   {t(item.key)}
                 </Link>
@@ -138,7 +138,7 @@ export default function Header() {
                 <div className="flex items-center justify-between">
                   <a
                     href={`tel:${tel}`}
-                    className="flex items-center gap-2 text-[15px] text-brand-deep"
+                    className="flex items-center gap-2 body-text text-brand-deep"
                   >
                     <Phone className="h-4 w-4" strokeWidth={1.6} />
                     {HOTEL_CONFIG.phone}
@@ -148,7 +148,7 @@ export default function Header() {
                 <Link
                   href="/dat-phong"
                   onClick={() => setMobileOpen(false)}
-                  className="block bg-brand-deep py-3.5 text-center text-[14px] tracking-[0.06em] text-white"
+                  className="block bg-brand-deep py-3.5 text-center text-[13px] font-semibold uppercase tracking-[0.1em] text-white"
                 >
                   {t('nav.bookNow')}
                 </Link>

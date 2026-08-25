@@ -7,6 +7,8 @@ interface CoverImageProps {
   /** Ảnh đầu trang — tải ngay, không lazy. */
   priority?: boolean
   sizes?: string
+  /** Ảnh nền bị lớp phủ tối che gần hết thì hạ chất lượng cho nhẹ. */
+  quality?: number
   className?: string
 }
 
@@ -19,6 +21,7 @@ export default function CoverImage({
   alt,
   priority = false,
   sizes = '100vw',
+  quality,
   className,
 }: CoverImageProps) {
   return (
@@ -28,6 +31,7 @@ export default function CoverImage({
       fill
       priority={priority}
       sizes={sizes}
+      quality={quality}
       className={cn('object-cover', className)}
     />
   )

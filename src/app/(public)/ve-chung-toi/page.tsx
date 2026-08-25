@@ -24,7 +24,7 @@ export default async function AboutPage() {
             <CoverImage src={placeholderImage()} alt="Long Hải Hotel" sizes="(max-width: 1024px) 100vw, 50vw" />
           </div>
           <div>
-            <h2 className="text-xl font-light uppercase tracking-[0.12em] text-ink lg:text-2xl">
+            <h2 className="text-xl h-section text-ink lg:text-2xl">
               <T k="about.story" />
             </h2>
             <span className="mt-5 block h-px w-14 bg-brand" />
@@ -36,7 +36,7 @@ export default async function AboutPage() {
 
         {/* Giá trị cốt lõi */}
         <div className="mt-20 bg-sand px-8 py-14 lg:mt-28 lg:px-14 lg:py-20">
-          <h2 className="text-center text-xl font-light uppercase tracking-[0.12em] text-ink lg:text-2xl">
+          <h2 className="text-center text-xl h-section text-ink lg:text-2xl">
             <T k="about.values" />
           </h2>
           <span className="mx-auto mt-5 block h-px w-14 bg-brand" />
@@ -49,10 +49,10 @@ export default async function AboutPage() {
             ].map((v) => (
               <div key={v.titleKey} className="text-center">
                 <span className="block text-2xl font-light text-brand">{v.n}</span>
-                <h3 className="mt-5 text-[13px] uppercase tracking-[0.12em] text-ink">
+                <h3 className="mt-5 eyebrow text-ink">
                   <T k={v.titleKey} />
                 </h3>
-                <p className="mt-4 text-[15px] leading-[1.75] text-ink-soft">
+                <p className="mt-4 body-text leading-[1.75] text-ink-soft">
                   <T k={v.descKey} />
                 </p>
               </div>
@@ -62,7 +62,7 @@ export default async function AboutPage() {
 
         {/* Cam kết bền vững */}
         <div className="mt-20 lg:mt-28">
-          <h2 className="text-center text-xl font-light uppercase tracking-[0.12em] text-ink lg:text-2xl">
+          <h2 className="text-center text-xl h-section text-ink lg:text-2xl">
             <T k="about.sustainability" />
           </h2>
           <span className="mx-auto mt-5 block h-px w-14 bg-brand" />
@@ -73,7 +73,7 @@ export default async function AboutPage() {
                 <span className="text-[12px] font-normal tracking-[0.1em] text-brand">
                   0{i + 1}
                 </span>
-                <p className="text-[15px] leading-[1.75] text-ink-soft">
+                <p className="body-text leading-[1.75] text-ink-soft">
                   <T k={key} />
                 </p>
               </div>

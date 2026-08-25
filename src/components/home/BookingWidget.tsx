@@ -34,7 +34,7 @@ export default function BookingWidget({ cheapest }: BookingWidgetProps) {
   return (
     <section className="px-4 py-14 sm:px-6 lg:px-10 lg:py-20">
       <div className="relative overflow-hidden">
-        <CoverImage src="/images/hotel-hero.jpg" alt="" sizes="100vw" />
+        <CoverImage src="/images/hotel-hero.jpg" alt="" sizes="100vw" quality={50} />
         <div className="absolute inset-0 bg-night/85" />
 
         <div className="relative grid items-center gap-10 p-8 sm:p-12 lg:grid-cols-3 lg:gap-8 lg:p-14">
@@ -44,12 +44,12 @@ export default function BookingWidget({ cheapest }: BookingWidgetProps) {
               {t('widget.holiday')}
             </h3>
             <span className="mx-auto mt-4 block h-px w-10 bg-brand" />
-            <p className="mx-auto mt-5 max-w-sm text-[15px] leading-[1.75] text-white/85">
+            <p className="mx-auto mt-5 max-w-sm body-text leading-[1.75] text-white/85">
               {t('widget.holidayDesc')}
             </p>
             <Link
               href="/phong"
-              className="mt-7 inline-block border-b border-white/40 pb-1.5 text-[14px] uppercase tracking-[0.12em] text-white transition-opacity hover:opacity-75"
+              className="mt-7 inline-block border-b border-white/40 pb-1.5 eyebrow text-white transition-opacity hover:opacity-75"
             >
               {t('hero.roomsSuites')}
             </Link>
@@ -61,7 +61,7 @@ export default function BookingWidget({ cheapest }: BookingWidgetProps) {
               <h3 className="font-display text-[26px] font-light text-ink">
                 {t('widget.searchRooms')}
               </h3>
-              <p className="mt-1.5 text-[13px] uppercase tracking-[0.14em] text-ink-muted">
+              <p className="mt-1.5 eyebrow text-ink-muted">
                 {t('widget.startBooking')}
               </p>
             </div>
@@ -70,7 +70,7 @@ export default function BookingWidget({ cheapest }: BookingWidgetProps) {
               <div className="text-center">
                 <label
                   htmlFor="w-checkin"
-                  className="mb-2.5 block text-[13px] uppercase tracking-[0.1em] text-ink-soft"
+                  className="mb-2.5 block eyebrow text-ink-soft"
                 >
                   {t('booking.checkIn')}
                 </label>
@@ -86,7 +86,7 @@ export default function BookingWidget({ cheapest }: BookingWidgetProps) {
               <div className="border-l border-line text-center">
                 <label
                   htmlFor="w-checkout"
-                  className="mb-2.5 block text-[13px] uppercase tracking-[0.1em] text-ink-soft"
+                  className="mb-2.5 block eyebrow text-ink-soft"
                 >
                   {t('booking.checkOut')}
                 </label>
@@ -109,7 +109,7 @@ export default function BookingWidget({ cheapest }: BookingWidgetProps) {
               >
                 <Minus className="h-3.5 w-3.5" strokeWidth={1.6} />
               </button>
-              <span className="text-[15px] text-ink">
+              <span className="body-text text-ink">
                 {guests} {t('widget.guest')}
               </span>
               <button
@@ -123,7 +123,7 @@ export default function BookingWidget({ cheapest }: BookingWidgetProps) {
 
             <button
               onClick={submit}
-              className="mt-6 w-full bg-brand-deep py-3.5 text-[14px] uppercase tracking-[0.12em] text-white transition-colors hover:bg-night"
+              className="mt-6 w-full bg-brand-deep py-3.5 eyebrow text-white transition-colors hover:bg-night"
             >
               {t('widget.checkAvailability')}
             </button>
@@ -137,16 +137,16 @@ export default function BookingWidget({ cheapest }: BookingWidgetProps) {
             <span className="mx-auto mt-4 block h-px w-10 bg-brand" />
             {cheapest && (
               <>
-                <p className="mt-6 text-[15px] uppercase tracking-[0.1em] text-white/85">
+                <p className="mt-6 body-text uppercase tracking-[0.1em] text-white/85">
                   {translateData(cheapest.name, locale)}
                 </p>
-                <p className="mt-3 text-[34px] font-light text-white lg:text-[40px]">
+                <p className="mt-3 text-[34px] text-white lg:text-[40px]">
                   {formatVND(cheapest.basePrice)}
                 </p>
                 <p className="mt-1 text-[13px] text-white/65">{t('widget.perNightShort')}</p>
                 <Link
                   href={`/dat-phong?type=${cheapest.slug}`}
-                  className="mt-7 inline-block border-b border-white/40 pb-1.5 text-[14px] uppercase tracking-[0.12em] text-white transition-opacity hover:opacity-75"
+                  className="mt-7 inline-block border-b border-white/40 pb-1.5 eyebrow text-white transition-opacity hover:opacity-75"
                 >
                   {t('widget.flashSale')}
                 </Link>

@@ -23,30 +23,23 @@ export default function SectionHeader({
   return (
     <div className={cn('text-center', className)}>
       {subtitleKey && (
-        <p
-          className={cn(
-            'mb-4 text-[12px] uppercase tracking-[0.18em]',
-            light ? 'text-brand' : 'text-brand-deep'
-          )}
-        >
+        <p className={cn('eyebrow mb-4', light ? 'text-brand' : 'text-brand-deep')}>
           {t(subtitleKey)}
         </p>
       )}
       <h2
         className={cn(
-          'text-[26px] font-light uppercase tracking-[0.08em] sm:text-[32px] lg:text-[38px]',
+          'h-section text-[26px] sm:text-[32px] lg:text-[38px]',
           light ? 'text-white' : 'text-ink'
         )}
       >
         {t(titleKey)}
       </h2>
-      <span
-        className={cn('mx-auto mt-6 block h-px w-16', light ? 'bg-white/40' : 'bg-brand')}
-      />
+      <span className={cn('mx-auto mt-6 block h-px w-16', light ? 'bg-white/40' : 'bg-brand')} />
       {descKey && (
         <p
           className={cn(
-            'mx-auto mt-7 max-w-2xl text-base leading-[1.75]',
+            'body-text mx-auto mt-7 max-w-2xl',
             light ? 'text-white/85' : 'text-ink-soft'
           )}
         >

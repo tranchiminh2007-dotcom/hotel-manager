@@ -95,10 +95,10 @@ export default async function HomePage() {
                 className="mx-auto mb-5 h-7 w-7 text-brand"
                 strokeWidth={1}
               />
-              <h3 className="text-[12px] uppercase tracking-[0.12em] text-ink">
+              <h3 className="eyebrow text-ink">
                 <T k={item.labelKey} />
               </h3>
-              <p className="mt-2.5 text-[15px] leading-[1.75] text-ink-soft">
+              <p className="mt-2.5 body-text leading-[1.75] text-ink-soft">
                 <T k={item.descKey} />
               </p>
             </div>
@@ -123,8 +123,8 @@ export default async function HomePage() {
           />
           <div className="mb-14 flex items-center justify-center gap-2.5">
             <Star className="h-4 w-4 fill-brand text-brand" strokeWidth={0} />
-            <span className="text-2xl font-light text-ink">{avgRating}</span>
-            <span className="text-[12px] uppercase tracking-[0.12em] text-ink-soft">
+            <span className="text-[26px] text-ink">{avgRating}</span>
+            <span className="eyebrow text-ink-soft">
               / 5 · {reviews.length} <T k="reviews.reviews" />
             </span>
           </div>
@@ -146,11 +146,11 @@ export default async function HomePage() {
                   ))}
                 </div>
                 {review.content && (
-                  <p className="font-display text-base font-light italic leading-[1.75] text-ink-soft line-clamp-4">
+                  <p className="font-display text-[17px] italic leading-[1.75] text-ink-soft line-clamp-4">
                     “{review.content}”
                   </p>
                 )}
-                <p className="mt-6 text-[12px] uppercase tracking-[0.14em] text-ink">
+                <p className="mt-6 eyebrow text-ink">
                   {review.guestName}
                 </p>
               </div>
@@ -183,14 +183,14 @@ export default async function HomePage() {
                 className="flex flex-col border border-line bg-white p-8 text-center"
               >
                 {promo.badgeText && (
-                  <span className="mx-auto mb-5 bg-brand-deep px-3.5 py-1.5 text-[12px] uppercase tracking-[0.12em] text-white">
+                  <span className="mx-auto mb-5 bg-brand-deep px-3.5 py-1.5 eyebrow text-white">
                     <TD>{promo.badgeText}</TD>
                   </span>
                 )}
                 <h3 className="text-sm uppercase tracking-[0.08em] text-ink">
                   <TD>{promo.title}</TD>
                 </h3>
-                <p className="mt-4 flex-1 text-[15px] leading-[1.75] text-ink-soft">
+                <p className="mt-4 flex-1 body-text leading-[1.75] text-ink-soft">
                   <TD>{promo.description}</TD>
                 </p>
                 <Link href="/dat-phong" className="mt-7">
@@ -206,13 +206,13 @@ export default async function HomePage() {
 
       {/* CTA cuối */}
       <section className="relative overflow-hidden">
-        <CoverImage src="/images/hotel-hero.jpg" alt="" sizes="100vw" />
+        <CoverImage src="/images/hotel-hero.jpg" alt="" sizes="100vw" quality={50} />
         <div className="absolute inset-0 bg-night/85" />
         <div className="relative mx-auto max-w-3xl px-6 py-20 text-center lg:py-28">
-          <h2 className="text-2xl font-light uppercase leading-tight tracking-[0.12em] text-white sm:text-3xl sm:tracking-[0.14em]">
+          <h2 className="text-2xl h-section text-white sm:text-3xl sm:tracking-[0.14em]">
             <T k="home.cta.title" />
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-base leading-[1.75] text-white/75">
+          <p className="mx-auto mt-6 max-w-xl body-text text-white/75">
             <T k="home.cta.desc" />
           </p>
           <Link href="/dat-phong" className="mt-10 inline-block">

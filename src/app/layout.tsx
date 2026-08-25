@@ -2,18 +2,22 @@ import type { Metadata } from 'next'
 import { Be_Vietnam_Pro, Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 
-/** Font chính: thiết kế riêng cho tiếng Việt, dấu hiển thị rõ ở mọi cỡ chữ. */
+/**
+ * Chỉ tải đúng số kiểu chữ đang dùng — mỗi kiểu là một file tải về, và khi
+ * font tải xong trình duyệt phải dựng lại chữ, tải thừa sẽ gây giật lúc cuộn.
+ * Font chính thiết kế riêng cho tiếng Việt nên dấu hiển thị rõ ở mọi cỡ chữ.
+ */
 const beVietnamPro = Be_Vietnam_Pro({
   subsets: ['vietnamese', 'latin'],
-  weight: ['300', '400', '500', '600'],
+  weight: ['400', '500', '600'],
   variable: '--font-sans',
   display: 'swap',
 })
 
-/** Font trang trí cho vài tiêu đề lớn và trích dẫn. */
+/** Font trang trí — chỉ dùng cho vài tiêu đề lớn và trích dẫn. */
 const cormorant = Cormorant_Garamond({
   subsets: ['vietnamese', 'latin'],
-  weight: ['300', '400', '500'],
+  weight: ['400'],
   style: ['normal', 'italic'],
   variable: '--font-display',
   display: 'swap',

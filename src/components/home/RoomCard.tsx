@@ -53,7 +53,7 @@ export default function RoomCard({
 
       <div className="px-6 py-5 text-center">
         <h3 className="text-[17px] uppercase tracking-[0.08em] text-ink">{label}</h3>
-        <p className="mt-2.5 text-[15px] text-ink-soft">
+        <p className="mt-2.5 body-text text-ink-soft">
           <span className="text-[19px] text-brand-deep">{formatVND(basePrice)}</span>{' '}
           {t('rooms.perNight')}
         </p>

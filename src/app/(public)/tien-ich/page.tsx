@@ -46,7 +46,7 @@ export default async function AmenitiesPage() {
           {Object.entries(grouped).map(([category, items]) => (
             <div key={category}>
               <div className="mb-10 flex items-center gap-5">
-                <h2 className="whitespace-nowrap text-[13px] uppercase tracking-[0.16em] text-ink">
+                <h2 className="whitespace-nowrap eyebrow text-ink">
                   <T k={`amenities.cat.${category}`} />
                 </h2>
                 <span className="h-px flex-1 bg-line" />
@@ -64,10 +64,10 @@ export default async function AmenitiesPage() {
                         className="mb-6 h-7 w-7 text-brand transition-transform duration-500 group-hover:scale-110"
                         strokeWidth={1}
                       />
-                      <h3 className="text-[13px] uppercase tracking-[0.12em] text-ink">
+                      <h3 className="eyebrow text-ink">
                         <TD>{amenity.name}</TD>
                       </h3>
-                      <p className="mt-3.5 text-[15px] leading-[1.75] text-ink-soft">
+                      <p className="mt-3.5 body-text leading-[1.75] text-ink-soft">
                         <TD>{amenity.description}</TD>
                       </p>
                     </div>

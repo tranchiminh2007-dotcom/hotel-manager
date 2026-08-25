@@ -41,23 +41,23 @@ export default async function RoomsPage() {
                     }`}
                   >
                     <CoverImage src={rt.images[0]?.url || placeholderImage()} alt={rt.name} sizes="(max-width: 1024px) 100vw, 50vw" className="transition-transform duration-[900ms] ease-out group-hover:scale-[1.05]" />
-                    <span className="absolute left-6 top-6 bg-white/95 px-4 py-2 text-[12px] uppercase tracking-[0.12em] text-ink">
+                    <span className="absolute left-6 top-6 bg-white/95 px-4 py-2 eyebrow text-ink">
                       <TD>{rt.name}</TD>
                     </span>
                   </div>
 
                   {/* Nội dung */}
                   <div className={`p-8 lg:p-12 ${flip ? 'lg:order-1' : ''}`}>
-                    <h2 className="text-xl font-light uppercase tracking-[0.1em] text-ink lg:text-2xl">
+                    <h2 className="text-xl h-section text-ink lg:text-2xl">
                       <TD>{rt.name}</TD>
                     </h2>
                     <span className="mt-4 block h-px w-12 bg-brand" />
 
-                    <p className="mt-6 text-base leading-[1.75] text-ink-soft">
+                    <p className="mt-6 body-text text-ink-soft">
                       <TD>{rt.description}</TD>
                     </p>
 
-                    <div className="mt-7 flex flex-wrap gap-x-7 gap-y-3 text-[12px] uppercase tracking-[0.08em] text-ink-soft">
+                    <div className="mt-7 flex flex-wrap gap-x-7 gap-y-3 eyebrow text-ink-soft">
                       <span className="flex items-center gap-2">
                         <BedDouble className="h-3.5 w-3.5 text-brand" strokeWidth={1.3} />
                         <TD>{rt.bedType}</TD>
@@ -73,14 +73,14 @@ export default async function RoomsPage() {
                     </div>
 
                     <div className="mt-8 border-t border-line pt-7">
-                      <h3 className="text-[12px] uppercase tracking-[0.12em] text-ink">
+                      <h3 className="eyebrow text-ink">
                         <T k="rooms.amenities" />
                       </h3>
                       <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                         {amenities.map((a) => (
                           <span
                             key={a}
-                            className="flex items-center gap-2 text-[15px] text-ink-soft"
+                            className="flex items-center gap-2 body-text text-ink-soft"
                           >
                             <Check className="h-3 w-3 flex-shrink-0 text-brand" strokeWidth={2} />
                             <TD>{a}</TD>
@@ -91,10 +91,10 @@ export default async function RoomsPage() {
 
                     <div className="mt-8 flex flex-wrap items-end justify-between gap-5 border-t border-line pt-7">
                       <div>
-                        <span className="text-2xl font-light text-ink lg:text-3xl">
+                        <span className="text-[26px] text-ink lg:text-3xl">
                           {formatVND(rt.basePrice)}
                         </span>
-                        <span className="ml-1.5 text-[12px] uppercase tracking-[0.1em] text-ink-soft">
+                        <span className="ml-1.5 eyebrow text-ink-soft">
                           <T k="rooms.perNight" />
                         </span>
                       </div>

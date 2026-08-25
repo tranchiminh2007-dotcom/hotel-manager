@@ -33,7 +33,7 @@ export default async function LocalAreaPage() {
           {Object.entries(grouped).map(([category, items]) => (
             <div key={category}>
               <div className="mb-10 flex items-center gap-5">
-                <h2 className="whitespace-nowrap text-[13px] uppercase tracking-[0.16em] text-ink">
+                <h2 className="whitespace-nowrap eyebrow text-ink">
                   <T k={`area.cat.${category}`} />
                 </h2>
                 <span className="h-px flex-1 bg-line" />
@@ -51,11 +51,11 @@ export default async function LocalAreaPage() {
                     </div>
 
                     <div className="p-6">
-                      <p className="text-[15px] leading-[1.75] text-ink-soft line-clamp-4">
+                      <p className="body-text leading-[1.75] text-ink-soft line-clamp-4">
                         <TD>{attraction.description}</TD>
                       </p>
                       <div className="mt-6 flex items-center justify-between border-t border-line pt-5">
-                        <span className="flex items-center gap-1.5 text-[12px] uppercase tracking-[0.08em] text-brand">
+                        <span className="flex items-center gap-1.5 eyebrow text-brand">
                           <Navigation className="h-3 w-3" strokeWidth={1.5} />
                           <TD>{attraction.distance}</TD>
                         </span>
@@ -64,7 +64,7 @@ export default async function LocalAreaPage() {
                             href={attraction.mapUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-1.5 text-[12px] uppercase tracking-[0.08em] text-ink-soft transition-colors hover:text-ink"
+                            className="flex items-center gap-1.5 eyebrow text-ink-soft transition-colors hover:text-ink"
                           >
                             <MapPin className="h-3 w-3" strokeWidth={1.5} />
                             <T k="area.viewMap" />
